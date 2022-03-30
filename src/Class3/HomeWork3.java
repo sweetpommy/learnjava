@@ -28,6 +28,7 @@ public class HomeWork3 {
 		q3_5 Q3_5 = new q3_5();
 		System.out.println("=====HomeWork3_Q5======");
 		Q3_5.initCards();
+		System.out.println("=====HomeWork END======");
 	}
 }
 
