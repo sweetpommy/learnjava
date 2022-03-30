@@ -6,23 +6,23 @@ import java.util.Scanner;
 public class HomeWork4 {
 	public static void main(String args[]) {
 
-//		6
+
 		System.out.println("=====HomeWork4_Q1======");
-//		Q4_1 q4_1 = new Q4_1();
-//		q4_1.sortNumber("S");
-//		q4_1.sortNumber("M");	
+		Q4_1 q4_1 = new Q4_1();
+		q4_1.sortNumber("S");
+		q4_1.sortNumber("M");	
 		
-//		System.out.println("=====HomeWork4_Q2======");
-//		Q4_2 q4_2 = new Q4_2();	
-//		q4_2.Compute();
+		System.out.println("=====HomeWork4_Q2======");
+		Q4_2 q4_2 = new Q4_2();	
+		q4_2.Compute();
 		
-//		System.out.println("=====HomeWork4_Q3======");
+		System.out.println("=====HomeWork4_Q3======");
 		Q4_3 q4_3 = new Q4_3();	
 		q4_3.Month_List_Days();	
 		
-//		System.out.println("=====HomeWork4_Q4======");
-//		Q4_4 q4_4 = new Q4_4();	
-//		q4_4.play_game();
+		System.out.println("=====HomeWork4_Q4======");
+		Q4_4 q4_4 = new Q4_4();	
+		q4_4.play_game();
 		System.out.println("=====HomeWork4 END======");
 	}
 }
