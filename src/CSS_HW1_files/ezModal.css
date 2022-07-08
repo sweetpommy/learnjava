@@ -1,0 +1,3500 @@
+:root {
+    --ez-modal-discount-bg: #f1f7f8;
+    --ez-error-title-text:#fc5272;
+    --ez-modal-green-main:#11d073;
+    --ez-modal-green-dark: #0c9251;
+    --ez-modal-green-btn-hover: #3da874;
+    --ez-modal-green-btn-disabled: #a0ecc7;
+    --ez-modal-green-btn-loading: #6dbe97;
+}
+/* ---------- bootstrap-3.0.2.css 拆離modal用到的css部分 ---------- */
+
+.G-ezModal.fade,
+.G-ezModal-modal-show .modal-backdrop.fade {
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    -moz-transition: opacity 0.15s linear;
+    -ms-transition: opacity 0.15s linear;
+    -o-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+}
+
+.G-ezModal.fade.in,
+.G-ezModal-modal-show .modal-backdrop.fade.in {
+    opacity: 1;
+}
+.G-ezModal.fade.show,
+.G-ezModal-modal-show .modal-backdrop.fade.in {
+    opacity: 1;
+}
+
+.G-ezModal-open {
+    overflow: hidden;
+}
+
+.G-ezModal-modal-show .modal-backdrop.fade {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.G-ezModal-modal-show .modal-backdrop.in {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.G-ezModal *,
+.G-ezModal *:before,
+.G-ezModal *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.G-ezModal .clearfix:before,
+.G-ezModal .clearfix:after {
+    display: table;
+    content: ' ';
+}
+
+.G-ezModal .clearfix:after {
+    clear: both;
+}
+
+.G-ezModal .pull-right {
+    float: right;
+}
+
+.G-ezModal .pull-left {
+    float: left;
+}
+
+/* ---------- ezModal/ezLogin 共用區塊 ---------- */
+
+/* ----------- G=Global ------------------- */
+
+.G-ezModal-modal-show {
+    padding: 0 !important;
+    overflow: hidden !important;
+    height: 100%;
+    position: relative;
+}
+
+.G-ezModal-modal-show .modal-backdrop {
+    background-color: rgba(34, 34, 34, 0.7) !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 1 !important;
+    z-index: 1030;
+}
+
+.G-ezModal-modal-show .modal-backdrop:last-child {
+    z-index: 1050 !important;
+}
+
+.G-ezModal {
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei' !important;
+    min-width: auto !important;
+    height: auto !important;
+    margin: 0px !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    display: none;
+    text-align: left !important;
+    overflow: auto !important;
+    z-index: 1060 !important;
+}
+
+.G-ezModal:before {
+    display: none !important;
+}
+
+.G-ezModal .G-ezModal-modal-dialog {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.G-ezModal.fade .G-ezModal-modal-dialog {
+    opacity: 0;
+    -webkit-transform: translate(0, -75%);
+    -moz-transform: translate(0, -75%);
+    -ms-transform: translate(0, -75%);
+    -o-transform: translate(0, -75%);
+    transform: translate(0, -75%);
+    -webkit-transition: transform 0.8s ease, opacity 0.8s ease;
+    -moz-transition: transform 0.8s ease, opacity 0.8s ease;
+    -ms-transition: transform 0.8s ease, opacity 0.8s ease;
+    -o-transition: transform 0.8s ease, opacity 0.8s ease;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    top: 0;
+}
+
+.G-ezModal.fade.in .G-ezModal-modal-dialog {
+    opacity: 1;
+    -webkit-transform: translate(0, 15vh);
+    -moz-transform: translate(0, 15vh);
+    -ms-transform: translate(0, 15vh);
+    -o-transform: translate(0, 15vh);
+    transform: translate(0, 15vh);
+}
+.G-ezModal.fade.show .G-ezModal-modal-dialog {
+    opacity: 1;
+    -webkit-transform: translate(0, 15vh);
+    -moz-transform: translate(0, 15vh);
+    -ms-transform: translate(0, 15vh);
+    -o-transform: translate(0, 15vh);
+    transform: translate(0, 15vh);
+}
+
+.G-ezModal .G-ezModal-modal-content {
+    position: relative;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    outline: 0;
+}
+.G-ezModal .G-ezModal-modal-content.ezModal-discountCode,
+.G-ezModal .G-ezModal-modal-content.ez-order-share {
+    border-radius: 10px;
+}
+.G-ezModal .G-ezModal-modal-close-btn {
+    background-image: url(../../images/common/mem-modal/login.png);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: -10px -142px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 5;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+}
+.G-ezModal .ez-order-share .G-ezModal-modal-close-btn {
+    border-top-right-radius: 10px;
+}
+.G-ezModal .G-ezModal-modal-close-btn.discountCode-close {
+    width: 30px;
+    height: 38px;
+    background-position: -20px -142px;
+}
+.G-ezModal .G-ezModal-modal-close-btn.discountCodeClaim-close {
+    width: 26px;
+    height: 26px;
+    background-image: url(../../images/common/discount-modal/close.svg);
+    background-position: center;
+    top: 20px;
+    right: 20px;
+}
+.G-ezModal .G-ezModal-modal-close-btn.discountCodeClaim-close:hover {
+    filter: brightness(0.1);
+    background-position: center;
+    background-image: url(../../images/common/discount-modal/close.svg);
+    background-color: transparent;
+}
+.G-ezModal .G-ezModal-btn-hover:hover {
+    background-position: -10px -202px;
+    background-color: #d8d8d8;
+}
+.G-ezModal .G-ezModal-modal-close-btn.discountCode-close:hover {
+    background-position: -20px -202px;
+    background-color: transparent;
+}
+
+.G-ezModal .G-ezModal-modal-wrap {
+    transition: height 0.2s ease;
+}
+
+/* ---------- 收藏共用區塊 ---------- */
+
+.G-ezModal .prodtrack-wrap {
+    width: 100%;
+    padding: 0 25px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.G-ezModal .prodtrack-wrap a {
+    color: #1373d0;
+    text-decoration: none !important;
+    font-size: 15px !important;
+}
+
+.G-ezModal .prodtrack-wrap a:hover {
+    color: #1373d0;
+    border-color: #1373d0;
+    border-bottom: 1px solid #1373d0;
+}
+
+.G-ezModal .prodtrack-success {
+    margin-bottom: 13px;
+    color: #0c9251;
+    font-size: 20px;
+}
+
+.G-ezModal .prodtrack-img {
+    width: 75px;
+    margin-bottom: 17px;
+}
+
+.G-ezModal .prodtrack-txt {
+    line-height: 24px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.G-ezModal .prodtrack-txt-error {
+    line-height: 24px;
+    font-size: 15px;
+    text-align: center;
+    margin: 10px 0;
+    word-break: break-word;
+}
+
+.G-ezModal .prodtrack-errorTitle {
+    font-size: 20px;
+    color: var(--ez-error-title-text);
+}
+
+.G-ezModal .prodtrack-wrap .ezModal-greenBtn {
+    width: 90px !important;
+    min-width: auto;
+    margin-top: 10px;
+}
+
+/* ---------- ezLogin.js 共用區塊 ---------- */
+
+/* --------------- lo=Login -------------- */
+
+/* .lo-nextStep-btn 全線別共用不能拔!!! */
+
+.G-ezModal .ezModal-greenBtn,
+.G-ezModal .lo-nextStep-btn,
+.G-ezModal .ezModal-whiteBtn {
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    padding: 0 5px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+}
+
+.G-ezModal .ezModal-greenBtn,
+.G-ezModal .lo-nextStep-btn {
+    color: #ffffff;
+    background-color: var(--ez-modal-green-main);
+    border: 1px solid var(--ez-modal-green-main);
+}
+
+.G-ezModal .ezModal-greenBtn:hover,
+.G-ezModal .lo-nextStep-btn:hover {
+    color: #ffffff;
+    background-color: var(--ez-modal-green-dark);
+    border: 1px solid var(--ez-modal-green-dark);
+}
+
+.G-ezModal .ezModal-whiteBtn {
+    color: #222222;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.G-ezModal .ezModal-whiteBtn:hover {
+    color: #222222;
+    background-color: #dae1e1;
+    border: 1px solid #dae1e1;
+}
+
+.G-ezModal .ezModal-bsize15 {
+    font-size: 15px !important;
+}
+
+.G-ezModal .ezModal-greenBtn:link,
+.G-ezModal .ezModal-greenBtn:hover,
+.G-ezModal .ezModal-greenBtn:active,
+.G-ezModal .ezModal-greenBtn:visited,
+.G-ezModal .lo-nextStep-btn:link,
+.G-ezModal .lo-nextStep-btn:hover,
+.G-ezModal .lo-nextStep-btn:active,
+.G-ezModal .lo-nextStep-btn:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+.G-ezModal .ezModal-whiteBtn:link,
+.G-ezModal .ezModal-whiteBtn:hover,
+.G-ezModal .ezModal-whiteBtn:active,
+.G-ezModal .ezModal-whiteBtn:visited {
+    text-decoration: none;
+    color: #222222;
+}
+
+.G-ezModal .ezModal-greenBtn.disabled,
+.G-ezModal lo-nextStep-btn.disabled {
+    cursor: default;
+    background-color: #a0ecc7;
+    border: 1px solid #a0ecc7;
+}
+
+.G-ezModal .ezModal-greenBtn.loading,
+.G-ezModal lo-nextStep-btn.loading {
+    color: transparent;
+    background-image: url(../../images/common/btn_loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+    background-color: #6dbe97;
+    border-color: #6dbe97;
+}
+
+.G-ezModal .ezModal-main-wrap {
+    height: 100%;
+    overflow-x: hidden;
+    /* 避免rwd寬度縮放時，input欄位突出modal範圍 */
+}
+
+.G-ezModal .ezModal-wrap {
+    background-color: #fff;
+    height: 100%;
+    border-radius: 10px;
+}
+.G-ezModal #ez-order-share .ezModal-wrap {
+    border-radius: 10px;
+}
+.G-ezModal #ez-order-share .scam-alert-text + .ezModal-wrap {
+    height: auto;
+}
+.G-ezModal .ezModal-wrap.discountCodeBlock {
+    background-color: var(--ez-modal-discount-bg);
+    border-radius: 10px;
+}
+.G-ezModal .ezModal-wrap.discountCodeBlock.claim {
+    background-color: #f0f0f0;
+    padding-top: 0;
+}
+.G-ezModal .ezModal-wrap.discountCodeBlock.claim .loadingBackground {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    opacity: 0.45;
+    background: #fff;
+    cursor: wait;
+    z-index: 100;
+}
+.G-ezModal .discountCodeBlock .ezModal-title {
+    text-align: center;
+    font-size: 24px;
+    margin-top: -10px;
+}
+.G-ezModal .ezModal-main-left {
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    background-size: 100%;
+    background-image: url(../../images/common/mem-modal/login-modal.png);
+}
+@media only screen and (max-width: 991px) {
+    /* 平板尺寸載入2x圖 */
+    .G-ezModal .ezModal-main-left {
+        background-image: url(../../images/common/mem-modal/login-modal-2X.png);
+    }
+}
+.G-ezModal .ezModal-main-right {
+    margin-left: 294px;
+    padding-left: 45px;
+    padding-top: 30px;
+    width: 335px;
+    height: 100%;
+    position: relative;
+}
+
+.G-ezModal .ezModal-radio-group {
+    margin-top: 20px;
+}
+
+.G-ezModal .ezModal-radio-group input[type='radio'] {
+    display: none;
+}
+
+.G-ezModal .ezModal-radio-group label {
+    font-size: 14px;
+    line-height: 14px;
+    color: #222222;
+    font-weight: normal;
+    cursor: pointer;
+    margin-right: 18px;
+    margin-bottom: 0;
+}
+
+.G-ezModal .ezModal-radio-group label:last-child {
+    margin-right: 0;
+}
+
+.G-ezModal .ezModal-radio-group label::before {
+    content: '\00a0';
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    display: inline-block;
+    margin-right: 5px;
+    background-image: url(../../images/common/mem-modal/login.png);
+    background-repeat: no-repeat;
+    background-size: 190%;
+    background-position: -5px -339px;
+}
+
+.G-ezModal .ezModal-radio-group input[type='radio']:checked + label::before {
+    background-position: -5px -366px;
+}
+
+.G-ezModal .ezModal-main-reg-block,
+.G-ezModal .ezModal-main-nonMember-block {
+    display: none;
+}
+
+.G-ezModal .ezModal-main-tab {
+    font-size: 21px;
+    line-height: 1.42857143;
+    color: #000000;
+    padding: 0 13px 5px;
+    margin-right: -6px;
+    /* border-bottom: 1.5px solid #dddddd; */
+    display: inline-block;
+    cursor: pointer;
+}
+
+.G-ezModal .ezModal-main-tab:last-child {
+    margin-right: 0;
+}
+
+.G-ezModal .ezModal-main-tab-focus {
+    color: #0c9251;
+    border-bottom: 2px solid #11d073;
+}
+
+.G-ezModal .ezModal-main-fullTab {
+    position: relative;
+    font-size: 21px;
+    height: 37px;
+    color: #000000;
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dddddd;
+    display: inline-block;
+}
+.G-ezModal .ezModal-main-fullTab .caps-lock-hint {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    max-width: 66px;
+    line-height: 16px;
+    color: #fff;
+    background-color: rgba(34, 34, 34, 0.8);
+    padding: 4px 9px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+}
+.G-ezModal .ezModal-main-fullTab .caps-lock-hint.show {
+    opacity: 1;
+    visibility: visible;
+}
+.G-ezModal .ezModal-main-nonMember-desc,
+.G-ezModal .ezModal-main-login-desc {
+    font-size: 14px;
+    color: #8f9596;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.G-ezModal .ezModal-h1 {
+    font-size: 26px;
+    color: #000000;
+    width: 310px;
+    margin: auto;
+    padding-top: 40px;
+    line-height: 1.42857143;
+    text-align: center;
+}
+.G-ezModal .ezModal-h1.sub {
+    font-size: 24px;
+}
+.G-ezModal .ezModal-h1.mb-30 {
+    margin-bottom: 30px;
+}
+.G-ezModal .ezModal-h1.pt60 {
+    padding-top: 60px;
+}
+.G-ezModal .ezModal-h2 {
+    font-size: 16px;
+    color: #222222;
+    width: 470px;
+    margin: 28px auto 20px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-h2-icon {
+    font-size: 16px;
+    color: #222222;
+    width: 410px;
+    margin: 40px auto 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-h2-icon::before {
+    content: '';
+    width: 100px;
+    height: 70px;
+    margin: 0 auto 10px;
+    display: block;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.ezModal-icon-memFail .ezModal-hint {
+    color: gray;
+    font-size: 13px;
+    bottom: -14px;
+    position: relative;
+    line-height: 15px;
+}
+.G-ezModal .ezModal-icon-memFail::before {
+    background-image: url(../../images/common/mem-modal/memFail.svg);
+}
+
+.G-ezModal .ezModal-icon-resetpsw-success::before {
+    background-image: url(../../images/common/mem-modal/resetpsw-success.svg);
+}
+
+.G-ezModal .ezModal-input-group {
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.G-ezModal .ezModal-input-group .ezModal-input-box {
+    height: 34px;
+    padding: 0 10px;
+    background-color: white;
+    border: 1px #bbbbbb solid;
+}
+
+.G-ezModal .ezModal-input-group .ezModal-input-readonly {
+    background-color: #e6e6e6;
+}
+
+.G-ezModal .ezModal-input-focus {
+    outline: 0.8px #cccccc solid;
+}
+
+.G-ezModal .ezModal-input-group .ezModal-input-box.withAddon {
+    position: relative;
+    padding-left: 29px;
+    padding-right: 29px;
+}
+
+.G-ezModal .ezModal-input-group .ezModal-input-addon {
+    position: absolute;
+    left: 1px;
+    top: 3px;
+    width: 26px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-input-group .ezModal-input-addon::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 26px;
+    position: absolute;
+    left: 1px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-user::before {
+    background-position: -3px -193px;
+    background-size: 150%;
+    background-image: url(../../images/common/mem-modal/login.png);
+}
+
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-lock::before {
+    background-position: -3px -285px;
+    background-size: 150%;
+    background-image: url(../../images/common/mem-modal/login.png);
+}
+
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-email::before {
+    background-position: -3px -223px;
+    background-size: 150%;
+    background-image: url(../../images/common/mem-modal/login.png);
+}
+
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-mobile::before {
+    background-position: -3px -254px;
+    background-size: 150%;
+    background-image: url(../../images/common/mem-modal/login.png);
+}
+
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-order::before {
+    background-position: -3px -496px;
+    background-size: 150%;
+    background-image: url(../../images/common/mem-modal/login.png);
+}
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-auth::before {
+    z-index: 10;
+    background-image: url(../../images/common/member/icon-auth.png);
+    width: 100%;
+    height: 29px;
+}
+.G-ezModal
+    .ezModal-input-group
+    .ezModal-input-addon.ezModal-input-mail::before {
+    z-index: 10;
+    background-image: url(../../images/common/member/icon-email.svg);
+    width: 100%;
+    height: 33px;
+}
+.G-ezModal #ezModal-main .ezModal-input-group input,
+.G-ezModal #ezModal-discountCode .ezModal-input-group input {
+    font-family: inherit;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: #222222;
+    border: none;
+    font-size: 14px;
+    width: 100%;
+    background-color: transparent;
+    margin: 0;
+    padding: 3px 1px;
+    vertical-align: initial;
+    cursor: inherit;
+    box-shadow: none;
+    height: 32px;
+    line-height: normal !important;
+}
+#ezModal-main #ezModal-main-login-personId,
+#ezModal-main #ezModal-main-reg-personId,
+#ezModal-main #ezModal-main-nonMember {
+    width: 110%;
+}
+
+.G-ezModal #ezModal-main .ezModal-input-group input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.G-ezModal .ezModal-input-group.ezModal-captcha-wrap {
+    display: block;
+}
+
+.G-ezModal .ezModal-semi-left {
+    width: 50%;
+    width: calc((100% - 6px) / 2);
+    float: left;
+}
+
+.G-ezModal .ezModal-semi-right {
+    width: 48%;
+    width: calc((100% - 6px) / 2);
+    margin-left: 6px;
+    float: left;
+}
+
+.G-ezModal .ezModal-pass-eye {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    background-position: 1px -129px;
+    background-size: 110%;
+    background-image: url(../../images/common/mem-modal/login.png);
+    cursor: pointer;
+}
+
+.G-ezModal .ezModal-pass-eye.hover:hover {
+    background-position: 1px -160px;
+}
+
+.G-ezModal .ezModal-pass-eye.ezModal-eye-show {
+    background-position: 1px -160px;
+}
+
+.G-ezModal .ezModal-pass-eye.ezModal-eye-show.hover:hover {
+    background-position: 1px -129px;
+}
+
+/* firefox special??? */
+
+@-moz-document url-prefix() {
+    .G-ezModal .ezModal-pass-eye {
+        background-position: 1px -128.5px;
+    }
+    .G-ezModal .ezModal-pass-eye.ezModal-eye-show.hover:hover {
+        background-position: 1px -128.5px;
+    }
+}
+
+.G-ezModal .ezModal-captcha-wrap.ezModal-input-group .ezModal-input-box {
+    padding: 0 5px;
+}
+
+.G-ezModal .ezModal-captcha-group .ezModal-captchaImg-wrap {
+    text-align: center;
+    padding-right: 30px;
+    position: relative;
+    height: 34px;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    border: 1px #bbbbbb solid;
+}
+
+.G-ezModal .ezModal-captcha-group .ezModal-captchaImg-wrap img {
+    height: 23px;
+    vertical-align: initial;
+    margin-top: 6px;
+}
+
+.G-ezModal .ezModal-captcha-group .ezModal-captcha-refreshBtn {
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-left: 1px #cccccc solid;
+    cursor: pointer;
+    background-image: url(../../images/common/mem-modal/login.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: 3px -212px;
+}
+
+.G-ezModal .ezModal-captcha-group .ezModal-captcha-refreshBtn:hover {
+    background-color: #fff;
+}
+
+.G-ezModal .ezModal-main-checkbox-group {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.G-ezModal .ezModal-main-checkbox-group .ezModal-main-checkboxLabel {
+    color: #666666;
+    margin-bottom: 9px;
+    font-weight: normal;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.G-ezModal .ezModal-main-checkbox-group .ezModal-main-autoLogin {
+    display: none;
+}
+
+.G-ezModal
+    .ezModal-main-checkbox-group
+    .ezModal-main-autoLogin:checked
+    + .ezModal-main-checkboxLabel::before {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../../images/common/mem-modal/checkbox-selected.svg);
+}
+
+.G-ezModal .ezModal-main-checkbox-group .ezModal-main-checkboxLabel::before {
+    content: '\00a0';
+    display: inline-block;
+    margin-right: 5px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../../images/common/mem-modal/checkbox-normal.png);
+}
+
+.G-ezModal #ezModal-oauth #ezModal-captcha-response_error,
+.G-ezModal #ezModal-oauth #ezModal-main-error {
+    width: 230px;
+    position: absolute;
+}
+
+.G-ezModal .ezModal-main-oauth-section {
+    margin-top: 20px;
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-oauth-line {
+    color: #666666;
+    border-top: 1px solid #cccccc;
+    text-align: center;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-oauth-or {
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    display: block;
+    margin: 0 auto;
+    background-color: white;
+    top: -10px;
+    position: relative;
+    width: 150px;
+    height: 16px;
+    line-height: 16px;
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-oauth-btn {
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-oauth-btn:last-child {
+    margin-right: 0px;
+}
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-social-type {
+    text-align: center;
+    font-size: 0;
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-fbBtn {
+    background-image: url(../../images/common/mem-modal/social-fb.svg);
+}
+/*先將svg編譯後，再使用。避免hover時，圖片載入會造成有留白(閃爍)時間差的現象。 */
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-fbBtn:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle cx='17' cy='17' r='17' fill='%231877F2'/%3E%3Cpath fill='%23FFF' d='M21.652 18.971l.59-3.851h-3.695v-2.5c0-1.054.516-2.08 2.172-2.08h1.68V7.26S20.874 7 19.416 7c-3.043 0-5.033 1.845-5.033 5.184v2.936H11v3.851h3.383v9.311a13.422 13.422 0 0 0 4.164 0v-9.31h3.105z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-googleBtn {
+    background-image: url(../../images/common/mem-modal/social-google.svg);
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-googleBtn:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='34' height='34' viewBox='0 0 34 34'%3E%3Cdefs%3E%3Ccircle id='a' cx='17' cy='17' r='17'/%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cuse fill='%23F0F0F0' xlink:href='%23a'/%3E%3Cuse fill='%23000' fill-opacity='.05' xlink:href='%23a'/%3E%3Cpath fill='%234285F4' d='M28.52 17.273c0-.851-.076-1.67-.218-2.455H17v4.642h6.458a5.52 5.52 0 0 1-2.394 3.622v3.01h3.878c2.269-2.088 3.578-5.165 3.578-8.82z'/%3E%3Cpath fill='%2334A853' d='M17 29c3.24 0 5.956-1.075 7.942-2.907l-3.878-3.011c-1.075.72-2.45 1.145-4.064 1.145-3.125 0-5.77-2.11-6.715-4.947H6.276v3.11A11.995 11.995 0 0 0 17 29z'/%3E%3Cpath fill='%23FBBC05' d='M10.285 19.28A7.213 7.213 0 0 1 9.91 17c0-.79.136-1.56.376-2.28v-3.11h-4.01A11.995 11.995 0 0 0 5 17c0 1.936.464 3.77 1.276 5.39l4.01-3.11z'/%3E%3Cpath fill='%23EA4335' d='M17 9.773c1.762 0 3.344.605 4.587 1.794l3.442-3.442C22.951 6.19 20.235 5 17 5c-4.69 0-8.75 2.69-10.724 6.61l4.01 3.11c.943-2.836 3.589-4.947 6.714-4.947z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-lineBtn {
+    background-image: url(../../images/common/mem-modal/social-line.svg);
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-lineBtn:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='34' height='34' viewBox='0 0 34 34'%3E%3Cdefs%3E%3Cpath id='a' d='M0 0h34v34H0z'/%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cmask id='b' fill='%23fff'%3E%3Cuse xlink:href='%23a'/%3E%3C/mask%3E%3Cpath fill='%2300E000' d='M34 17c0 9.389-7.611 17-17 17S0 26.389 0 17 7.61 0 17 0s17 7.611 17 17' mask='url(%23b)'/%3E%3Cpath fill='%23FFF' d='M28.308 15.98c0-5.06-5.073-9.177-11.308-9.177-6.235 0-11.308 4.117-11.308 9.176 0 4.536 4.023 8.335 9.457 9.054.368.079.87.242.996.557.114.286.075.734.037 1.023l-.162.968c-.049.286-.227 1.118.98.61 1.207-.51 6.512-3.835 8.884-6.566 1.639-1.797 2.424-3.62 2.424-5.646'/%3E%3Cpath fill='%2300E000' d='M14.702 13.534h-.793a.22.22 0 0 0-.22.22v4.927c0 .121.099.22.22.22h.793a.22.22 0 0 0 .22-.22v-4.927a.22.22 0 0 0-.22-.22m5.46 0h-.793a.22.22 0 0 0-.22.22v2.927l-2.258-3.05a.186.186 0 0 0-.02-.023l-.012-.013-.004-.004a.123.123 0 0 0-.012-.01l-.006-.004-.011-.008-.007-.004-.012-.007-.007-.003-.012-.006-.007-.002-.013-.004a.206.206 0 0 1-.02-.005l-.01-.001a.077.077 0 0 0-.012-.002h-.812a.22.22 0 0 0-.22.219v4.927c0 .121.099.22.22.22h.793a.22.22 0 0 0 .22-.22v-2.926l2.261 3.053a.223.223 0 0 0 .058.056l.014.008.006.004.01.005.012.004.006.003.015.005h.003a.213.213 0 0 0 .057.008h.793a.22.22 0 0 0 .22-.22v-4.927a.22.22 0 0 0-.22-.22m-7.372 4.133h-2.154v-3.913a.22.22 0 0 0-.22-.22h-.794a.22.22 0 0 0-.22.22v4.927c0 .06.023.113.061.152l.003.003.004.004c.04.038.093.06.152.06h3.169a.22.22 0 0 0 .22-.22v-.793a.22.22 0 0 0-.22-.22m11.751-2.899a.22.22 0 0 0 .22-.22v-.794a.22.22 0 0 0-.22-.22h-3.169a.218.218 0 0 0-.153.062l-.002.003a.219.219 0 0 0-.065.156v4.926a.219.219 0 0 0 .068.158.22.22 0 0 0 .152.062h3.169a.22.22 0 0 0 .22-.22v-.794a.22.22 0 0 0-.22-.22h-2.155v-.833h2.155a.22.22 0 0 0 .22-.22v-.793a.22.22 0 0 0-.22-.22h-2.155v-.833h2.155z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-appleBtn {
+    background-image: url(../../images/common/mem-modal/social-apple.svg);
+}
+
+.G-ezModal .ezModal-main-oauth-section .ezModal-main-appleBtn:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='%23444' d='M34 17c0 9.389-7.611 17-17 17S0 26.389 0 17 7.61 0 17 0s17 7.611 17 17'/%3E%3Cpath d='M20.145 8.478c.743-.928 1.246-2.175 1.113-3.449-1.086.054-2.412.717-3.18 1.646-.69.796-1.3 2.095-1.14 3.316 1.22.105 2.438-.61 3.207-1.513m1.1 1.751c-1.772-.106-3.278 1.005-4.124 1.005-.847 0-2.142-.952-3.544-.926-1.823.027-3.516 1.058-4.441 2.698-1.904 3.28-.502 8.148 1.349 10.82.899 1.322 1.982 2.777 3.41 2.725 1.348-.053 1.877-.873 3.516-.873s2.115.873 3.543.847c1.48-.027 2.406-1.323 3.305-2.646 1.031-1.507 1.453-2.963 1.48-3.042-.027-.027-2.855-1.112-2.881-4.366-.027-2.724 2.22-4.02 2.326-4.1-1.269-1.877-3.252-2.089-3.94-2.142' fill='%23FFF' fill-rule='nonzero'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.G-ezModal .ezModal-main-authCode-hint {
+    font-size: 16px;
+    color: #222;
+    line-height: 16px;
+    width: 100%;
+    margin-top: 163px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-main-authCode-hint::before {
+    content: '';
+    width: 100px;
+    height: 70px;
+    margin: auto;
+    display: block;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.G-ezModal .ezModal-main-sending-email::before {
+    background-image: url(../../images/common/mem-modal/cvc-email.svg);
+}
+
+.G-ezModal .ezModal-main-sending-msg::before {
+    background-image: url(../../images/common/mem-modal/cvc-msg.svg);
+}
+
+.G-ezModal .ezModal-main-reg-authCode {
+    height: 420px;
+    text-align: center;
+    position: relative;
+    display: none;
+}
+
+.G-ezModal .ezModal-main-reg-authCode-email {
+    font-size: 16px;
+    line-height: 22px;
+    color: #0C9251;
+    width: 100%;
+    margin: 28px auto 45px;
+}
+
+.G-ezModal .ezModal-main-reg-authCode-email::before {
+    content: '';
+    width: 100px;
+    height: 70px;
+    margin: auto;
+    display: block;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.G-ezModal .ezModal-main-sent-email::before {
+    background-image: url(../../images/common/mem-modal/cvc-email-sent.svg);
+}
+
+.G-ezModal .ezModal-main-sent-msg::before {
+    background-image: url(../../images/common/mem-modal/cvc-msg-sent.svg);
+}
+
+.G-ezModal .ezModal-main-reg-privataPolice {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.G-ezModal .ezModal-main-reg-privataPolice a {
+    margin: 0 4px;
+}
+
+.G-ezModal .ezModal-greenLink {
+    color: var(--ez-modal-green-dark);
+    font-size: 14px;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    line-height: 15px;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    cursor: pointer;
+}
+
+.G-ezModal .ezModal-greenLink:hover {
+    color: #11d073;
+    text-decoration: none;
+    border-bottom: 1px solid #11d073;
+}
+
+.G-ezModal .ezModal-grayLink {
+    color: #666;
+    font-size: 14px;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    line-height: 15px;
+    border-bottom: 1px solid #666;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    cursor: pointer;
+}
+
+.G-ezModal .ezModal-grayLink:hover {
+    color: #222;
+    text-decoration: none;
+    border-bottom: 1px solid #222;
+}
+
+.G-ezModal .ezModal-main-bottom {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+    color: #666666;
+}
+
+.G-ezModal .ezModal-main-bottom-center {
+    left: 0;
+    right: 0;
+}
+
+.G-ezModal .ezModal-main-bottom > div {
+    margin-bottom: 6px;
+}
+
+.G-ezModal .ezModal-main-bottom > div:last-child {
+    margin-bottom: 0;
+}
+
+.G-ezModal .ezModal-main-bottom a,
+.G-ezModal .ezModal-main-bottom span,
+.G-ezModal .ezModal-resetPswHint a {
+    margin-left: 2px;
+}
+
+.G-ezModal #ezModal-main .ezModal-greenBtn,
+.G-ezModal #ezModal-main .ezModal-whiteBtn {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px 0;
+}
+
+.G-ezModal #ezModal-main .ezModal-mediumBtn {
+    width: 200px !important;
+}
+
+.G-ezModal #ezModal-main .ezModal-btn-center,
+.G-ezModal #ezModal-discountCode .ezModal-btn-center {
+    text-align: center;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center + p {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #666;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center + p > a {
+    font-weight: bold;
+    color: var(--ez-modal-green-dark);
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center.claim {
+    display: inline-block;
+    transform: translateY(3px);
+    width: 85%;
+    padding-right: 6px;
+    text-align: right;
+}
+.G-ezModal
+    #ezModal-discountCode
+    .couponList.owner.claim
+    .ezModal-btn-center.claim,
+.G-ezModal #ezModal-discountCode .overflowReset .ezModal-btn-center.claim {
+    padding-right: 13px;
+}
+.G-ezModal
+    #ezModal-discountCode
+    .couponList.owner.claim:hover
+    .ezModal-btn-center.claim {
+    padding-right: 6px;
+}
+.G-ezModal
+    #ezModal-discountCode
+    .couponList.owner.overflowReset:hover
+    .ezModal-btn-center.claim {
+    padding-right: 13px;
+}
+.G-ezModal #ezModal-discountCode .ezModal-buttonBlock {
+    background-color: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-radius: 3px;
+}
+.G-ezModal #ezModal-discountCode .ezModal-buttonBlock #discountCode-use {
+    width: 160px;
+    position: relative;
+    font-weight: bold;
+    pointer-events: auto;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center .claim-btn {
+    width: 160px;
+    margin: 20px auto 0;
+    font-weight: bold;
+    line-height: inherit;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center .link-btn {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    background: #fff;
+    color: #FF8B00;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    padding-left: 30px;
+    cursor: pointer;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center .link-btn:hover {
+    border: 1px solid #FF8B00;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center .link-btn::before {
+    position: absolute;
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-size: cover;
+    top: 8px;
+    left: 13px;
+    background-image: url(../../images/common/discount-modal/arrow_orange.svg);
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center #fail-discount-button {
+    margin-bottom: 49px;
+}
+.G-ezModal #ezModal-discountCode .ezModal-btn-center .close-btn.wd120 {
+    width: 120px;
+    margin: 0 auto;
+}
+.G-ezModal #ezModal-main .ezModal-resendAuthCodeBtn {
+    font-size: 14px !important;
+    line-height: 14px;
+    color: #222;
+    height: 30px;
+    padding: 8px 10px;
+    margin-top: 10px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    text-align: center;
+}
+.G-ezModal #ezModal-main .ezModal-resendAuthCodeBtn:hover {
+    color: var(--ez-modal-green-dark);
+}
+.G-ezModal #ezModal-main .ezModal-resendAuthCodeBtn:disabled {
+    color: #bbb;
+    background-color: #f0f0f0;
+}
+.G-ezModal .ezModal-middle {
+    width: 290px;
+    margin: 0 auto;
+}
+.G-ezModal .ezModal-middle.text-center {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.G-ezModal .couponIcon {
+    position: relative;
+    height: 70px;
+}
+.G-ezModal .busy .couponIcon {
+    top: 85px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='70' viewBox='0 0 100 70'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23F5B2B2' stroke-width='1.5' transform='translate(21 5)'%3E%3Crect width='56.037' height='13.125' x='.926' y='.938' rx='2'/%3E%3Cpath stroke-linecap='square' d='M7.404 7.5h36.349'/%3E%3Cellipse cx='49.137' cy='7.5' rx='2.019' ry='2.045'/%3E%3Crect width='56.037' height='13.125' x='.926' y='18.665' rx='2'/%3E%3Cpath stroke-linecap='square' d='M7.404 25.227h36.349'/%3E%3Cellipse cx='49.137' cy='25.227' rx='2.019' ry='2.045'/%3E%3Crect width='56.037' height='13.125' x='.926' y='35.938' rx='2'/%3E%3Cpath stroke-linecap='square' d='M7.404 42.955h36.349M.673 57.045h18.455m19.744-.454h18.511m-28.215-7.16v4.603'/%3E%3Crect width='18.343' height='4.944' x='19.436' y='54.688' rx='1.977'/%3E%3Ccircle cx='49' cy='42' r='2'/%3E%3C/g%3E%3Cg transform='translate(69 46)'%3E%3Ccircle cx='9.5' cy='9.5' r='9.5' fill='%23FFF' fill-rule='nonzero'/%3E%3Cpath fill='%23F5B2B2' d='M10.511 11.511v-7.75H8.625v7.75h1.886zm0 3.864v-1.932H8.625v1.932h1.886zM9.568 0a9.41 9.41 0 0 1 4.853 1.311 9.068 9.068 0 0 1 3.404 3.404 9.41 9.41 0 0 1 1.311 4.853 9.41 9.41 0 0 1-1.311 4.853 9.068 9.068 0 0 1-3.404 3.404 9.41 9.41 0 0 1-4.853 1.311 9.41 9.41 0 0 1-4.853-1.311 9.24 9.24 0 0 1-3.404-3.427A9.368 9.368 0 0 1 0 9.568c0-1.733.437-3.343 1.311-4.83a9.417 9.417 0 0 1 3.427-3.427A9.368 9.368 0 0 1 9.568 0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+        no-repeat center;
+}
+.G-ezModal .error .couponIcon {
+    margin-bottom: 10px;
+}
+.G-ezModal .couponIcon img {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+.G-ezModal .ezModal-resetPswHint {
+    font-size: 14px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    position: absolute;
+}
+
+.G-ezModal .ezModal-captchaLogin-Hint {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
+    border-bottom: 10px solid white;
+}
+.G-ezModal .ezModal-captchaLogin-Hint > span:first-child {
+    margin-right: 16px;
+}
+
+.G-ezModal .ezModal-captchaLogin-Hint > span:first-child::after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    height: 14px;
+    border-right: 1px solid #dedede;
+    padding-right: 10px;
+    top: 2px;
+}
+
+.G-ezModal .ezModal-captchaLogin-verifyHints {
+    font-size: 16px;
+    text-align: center;
+    word-break: break-all;
+    /* word-wrap: break-word; */
+    max-width: 490px;
+    margin: 22px auto 10px auto;
+}
+.G-ezModal .ezModal-captchaLogin-verifyHints > p {
+    font-size: 14px;
+    color: #666;
+}
+.G-ezModal #ezModal-captchaLogin-verifyBtn {
+    text-align: center;
+}
+.G-ezModal #ezModal-captchaLogin-verifyBtn .ezModal-whiteBtn:first-child {
+    margin-right: 10px;
+}
+.G-ezModal #ezModal-captchaLogin-verifyBtn .ezModal-whiteBtn {
+    font-size: 16px;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+}
+.G-ezModal .ezModal-captchaLogin-Pwd {
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--ez-modal-green-dark);
+    margin: 20px auto;
+    text-align: center;
+}
+.G-ezModal #ezModal-main-captchaAuthCode .ezModal-main-reg-authCode-email {
+    margin: 7px auto 20px;
+}
+.G-ezModal #ezModal-main-captchaAuthCode-loading.ezModal-main-authCode-hint {
+    margin: 0 auto;
+    height: 100%;
+    display: inline-block;
+}
+.G-ezModal
+    #ezModal-main-captchaAuthCode-loading.ezModal-main-authCode-hint::before {
+    margin-top: 160px;
+}
+
+.G-ezModal .ezModal-flowChart {
+    height: 39px;
+    width: 310px;
+    margin: 25px auto 25px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-steps {
+    width: 19px;
+    height: 19px;
+    line-height: 20px;
+    color: white;
+    font-size: 11px;
+    margin-right: 33px;
+    border-radius: 10px;
+    background-color: #bbb;
+    display: inline-block;
+    position: relative;
+}
+
+.G-ezModal .ezModal-steps:last-child {
+    margin-right: 0;
+}
+
+.G-ezModal .ezModal-steps::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    position: absolute;
+    top: 8px;
+    left: 19px;
+    background-color: #bbb;
+}
+
+.G-ezModal .ezModal-steps:last-child::after {
+    width: 0;
+}
+
+.G-ezModal .ezModal-steps-active {
+    background-color: #11D073;
+    position: relative;
+}
+.G-ezModal .ezModal-steps-active::before {
+    position: absolute;
+    content: attr(data-step);
+    font-size: 12px;
+    line-height: 14px;
+    color: #222;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    bottom: 100%;
+    left: -75%;
+}
+.G-ezModal .ezModal-steps-active-line:after {
+    background-color: #11D073;
+}
+.G-ezModal .ezModal-steps-content {
+    font-size: 12px;
+    line-height: 14px;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.G-ezModal .ezModal-steps-content1 {
+    margin-left: -175px;
+}
+
+.G-ezModal .ezModal-steps-content2 {
+    margin-left: -60px;
+}
+
+.G-ezModal .ezModal-steps-content3 {
+    margin-left: 60px;
+}
+
+.G-ezModal .ezModal-steps-complete::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    top: 4px;
+    left: 4px;
+    position: absolute;
+    background-size: 250%;
+    background-position: -4px -266px;
+    background-image: url(../../images/common/mem-modal/login.png);
+}
+
+.G-ezModal .ezModal-resetPsw-authCode-email {
+    font-size: 16px;
+    line-height: 25px;
+    color: #222;
+    width: 450px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-authCode {
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-authCode > div:first-of-type {
+    margin-bottom: 15px;
+}
+
+.G-ezModal .ezModal-authCode-input input {
+    width: 200px;
+    height: 34px;
+    display: inline-block;
+    text-align: left;
+    padding-left: 10px;
+    border: solid 1px #bbbbbb;
+    outline: 1px transparent solid;
+}
+.G-ezModal .ezModal-authCode-input input::placeholder {
+    font-size: 14px;
+}
+.G-ezModal .ezModal-authCodeBtn {
+    width: 200px !important;
+}
+
+.G-ezModal #ezModal-authCode-error {
+    text-align: center;
+}
+
+.G-ezModal .ezModal-resetPsw-content {
+    font-size: 16px;
+    color: #222;
+    width: 310px;
+    margin: 0 auto 15px;
+    text-align: center;
+}
+.G-ezModal .ezModal-resetPsw-successHint {
+    font-size: 14px;
+    color: #666;
+    margin-top: -4px;
+}
+
+.G-ezModal .ezModal-authCodeError {
+    font-size: 16px;
+    line-height: 30px;
+    color: #222;
+    width: 100%;
+    margin: auto;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-authCodeError::before {
+    content: '';
+    width: 100px;
+    height: 70px;
+    margin: auto;
+    display: block;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.G-ezModal .ezModal-mobile-sentFail::before {
+    background-image: url(../../images/common/mem-modal/mobile-sentFail.svg);
+}
+
+.G-ezModal .ezModal-email-sentFail::before {
+    background-image: url(../../images/common/mem-modal/email-sentFail.svg);
+}
+
+.G-ezModal .ezModal-systemBusy {
+    font-size: 16px;
+    line-height: 17px;
+    color: #222;
+    width: 100%;
+    margin: auto;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-systemBusy::before {
+    content: '';
+    width: 100px;
+    height: 70px;
+    margin: 0 auto 10px;
+    display: block;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url(../../images/common/mem-modal/system-busy.svg);
+}
+
+.G-ezModal .ezModal-socialReg-wrap {
+    height: 310px;
+}
+
+.G-ezModal .ezModal-socialReg {
+    width: 50%;
+    height: 236px;
+    float: left;
+    font-size: 14px;
+    color: #222;
+    line-height: 24px;
+    margin-top: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.G-ezModal .ezModal-socialReg-image {
+    width: auto;
+    height: 56px;
+    font-size: 20px;
+    line-height: 23px;
+    margin-top: 10px;
+}
+
+/* 我已是易遊網會員 */
+.G-ezModal .ezModal-socialReg-ezMemIcon {
+    display: inline-block;
+    background-image: url(../../images/common/mem-modal/socialReg-ezMem.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 67px;
+    height: 56px;
+    margin: 10px auto 0 auto;
+}
+
+/* 社群無圖片時，則使用此圖片當預設 */
+.G-ezModal .ezModal-socialReg-newMemIcon {
+    display: inline-block;
+    background-image: url(../../images/common/mem-modal/socialReg-newMem.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 67px;
+    height: 56px;
+    margin: 10px auto 0 auto;
+}
+
+.G-ezModal .ezModal-socialReg-socialIcon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 27px;
+    right: 125px;
+}
+
+.G-ezModal .ezModal-socialReg span {
+    font-size: 20px;
+    line-height: 23px;
+    margin: 30px 0 10px;
+    display: block;
+}
+
+.G-ezModal .ezModal-socialReg button {
+    width: 140px !important;
+    margin: 15px auto 0 !important;
+    display: block;
+}
+
+.G-ezModal .ezModal-socialReg:last-child {
+    border-left: 1px solid #dcdcdc;
+}
+/*  Apple 隱私信箱
+.G-ezModal .ezModal-socialPrivate-wrap{
+  text-align: center;
+  margin-top: 40px;
+}
+.G-ezModal .ezModal-socialPrivate-image{
+  height: 70px;
+  margin-bottom: 12px;
+}
+.G-ezModal .ezModal-socialPrivate-wrap span {
+  display: block;
+  margin-bottom: 10px;
+} */
+.G-ezModal .ezModal-socialBind {
+    width: 290px;
+    margin: auto;
+    text-align: left;
+}
+
+/* 錯誤訊息&placeholder */
+
+.G-ezModal #ezModal-main-error {
+    width: 290px;
+    display: none;
+}
+
+.G-ezModal .ezModal-error-msg,
+.G-ezModal .ezModal-hint-msg {
+    color: var(--ez-error-title-text);
+    margin-top: 3px;
+    margin-bottom: -4px;
+    line-height: 18px;
+    font-size: 14px;
+    text-align: left;
+    position: relative;
+    display: none;
+}
+.G-ezModal .ezModal-error-msg#ez-order-share-authcode_error {
+    margin-top: -8px;
+    margin-bottom: 0;
+    line-height: 26px;
+}
+.ezModal-error-msg#order-share-email_error {
+    line-height: 26px;
+}
+.G-ezModal .ezModal-hint-msg {
+    display: block;
+}
+
+.G-ezModal .ezModal-error-input {
+    border-color: #f6b4b2 !important;
+    outline-color: #f6b4b2 !important;
+    border: 1px #cccccc solid;
+}
+.G-ezModal #ez-order-share .ezModal-error-input {
+    outline: none;
+    border: none;
+}
+.G-ezModal #ez-order-share .ezModal-error-input input {
+    border-color: #f8bac6;
+    outline-color: #f8bac6;
+    border: 1px solid #f8bac6;
+}
+
+.G-ezModal .ezModal-input-focus {
+    outline: 0.8px #cccccc solid;
+}
+
+.G-ezModal .ezModal-systemBusy span {
+    font-size: 16px !important;
+}
+
+.G-ezModal .G-ezModal-modal-wrap input::-webkit-input-placeholder {
+    color: #999999 !important;
+}
+
+.G-ezModal .G-ezModal-modal-wrap input::-moz-placeholder {
+    color: #999999 !important;
+}
+
+.G-ezModal .G-ezModal-modal-wrap input:-ms-input-placeholder {
+    color: #999999 !important;
+}
+
+.G-ezModal .G-ezModal-modal-wrap input:-moz-placeholder {
+    color: #999999 !important;
+}
+
+.G-ezModal .G-ezModal-modal-wrap input::placeholder {
+    color: #999999 !important;
+}
+
+.G-ezModal .ezModal-input-focus input::-webkit-input-placeholder {
+    color: #bbb !important;
+}
+
+.G-ezModal .ezModal-input-focus input::-moz-placeholder {
+    color: #bbb !important;
+}
+
+.G-ezModal .ezModal-input-focus input:-ms-input-placeholder {
+    color: #bbb !important;
+}
+
+.G-ezModal .ezModal-input-focus input:-moz-placeholder {
+    color: #bbb !important;
+}
+
+.G-ezModal .ezModal-input-focus input::placeholder {
+    color: #bbb !important;
+}
+
+.G-ezModal .ezModal-error-input input::-webkit-input-placeholder {
+    color: var(--ez-error-title-text) !important;
+}
+
+.G-ezModal .ezModal-error-input input::-moz-placeholder {
+    color: var(--ez-error-title-text) !important;
+}
+
+.G-ezModal .ezModal-error-input input:-ms-input-placeholder {
+    color: var(--ez-error-title-text) !important;
+}
+
+.G-ezModal .ezModal-error-input input:-moz-placeholder {
+    color: var(--ez-error-title-text) !important;
+}
+
+.G-ezModal .ezModal-error-input input::placeholder {
+    color: var(--ez-error-title-text) !important;
+}
+.G-ezModal .couponIcon.pt-100 {
+    padding-top: 100px;
+}
+.G-ezModal .content.mt-90 {
+    margin-top: 90px;
+    text-align: center;
+}
+/*折扣碼燈箱(我的折扣碼列表+input)*/
+.ezModal-wrap .ezModal-discount {
+    width: 615px;
+    margin: auto;
+    margin-left: 0;
+}
+.G-ezModal #ezModal-discountCode .discountCodeBlock .ezModal-buttonBlock {
+    background-color: var(--ez-modal-discount-bg);
+    position: relative;
+    padding: 0 0 10px 0;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.G-ezModal
+    #ezModal-discountCode
+    .discountCodeBlock
+    .ezModal-buttonBlock::before {
+    position: absolute;
+    z-index: 50;
+    content: '';
+    width: 100%;
+    height: 30px;
+    top: -40px;
+    background: linear-gradient(0deg, #f1f7f8 38%, rgba(255, 255, 255, 0) 100%);
+}
+.ezModal-wrap .ezModal-discount .dropdownBackground + .returnList {
+    background-image: url(../../images/common/mem-modal/ic-back-dark.svg);
+    float: left;
+    margin-left: 15px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+.ezModal-wrap .ezModal-discount.ezModal-main-discountCode .title.claim {
+    margin-left: 30px;
+    font-size: 20px;
+    padding-bottom: 13px;
+}
+.ezModal-wrap .ezModal-discount .returnList + .title.claim {
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.ezModal-wrap .ezModal-discount .title.claim + .couponList.owner {
+    padding-top: 10px;
+}
+.ezModal-wrap .ezModal-discount .couponList.owner .title {
+    font-size: 18px;
+    line-height: 20px;
+    padding-top: 21px;
+}
+.ezModal-wrap.claim .ezModal-discount .couponList.owner .title {
+    padding: 0 0 23px 0;
+}
+.ezModal-wrap .ezModal-discount .couponList.owner .title.marginMinus {
+    margin-top: -40px;
+}
+.ezModal-wrap.discountCodeBlock {
+    padding-top: 50px;
+}
+.ezModal-wrap.discountCodeBlock.pt40 {
+    padding-top: 40px;
+}
+.ezModal-wrap.discountCodeBlock.pt40 .ezModal-discount {
+    margin: 0 0 15px 0;
+}
+.ezModal-wrap.discountCodeBlock.claim.pt40 .ezModal-discount {
+    padding-top: 36px;
+    position: relative;
+}
+.ezModal-wrap.discountCodeBlock.claim.pt40
+    .ezModal-discount.ezModal-main-discountCode {
+    padding-top: 20px;
+    min-height: 340px;
+}
+.ezModal-wrap .input-group-cover {
+    width: 100%;
+    height: 42px;
+    margin-bottom: 1px;
+    border-radius: 2px;
+    border: solid 2px var(--ez-modal-green-main);
+    background-color: #ffffff;
+}
+.ezModal-wrap .input-group-cover.list {
+    height: 34px;
+    border-radius: 2px;
+    border: solid 1px #cccccc;
+    background-color: #ffffff;
+    margin: -2px auto 10px 25px;
+}
+.ezModal-wrap .input-group-cover.error,
+.ezModal-wrap .input-group-cover.list.error {
+    border: solid 2px #f5b2b2;
+}
+.ezModal-wrap .input-group-cover.list .input-box {
+    height: 34px;
+}
+.ezModal-wrap .input-group-cover.list .input-box #ezModal-main-discountCode {
+    height: 32px;
+}
+.ezModal-wrap .input-group-cover.list .claimButton {
+    padding-left: 10px;
+    position: relative;
+    width: 65px;
+    height: 34px;
+    font-size: 0;
+    float: left;
+    right: -4px;
+}
+
+.ezModal-wrap .input-group-cover.loading {
+    border-color: #cccccc;
+    background-color: #e3e3e3;
+}
+.ezModal-wrap.discountCodeBlock .input-group-cover .ezModal-input-group {
+    position: relative;
+    margin-top: 0;
+}
+.ezModal-wrap .input-group-cover .input-box {
+    border: none;
+    height: 42px;
+    width: 87%;
+    padding-left: 13px;
+    float: left;
+}
+.ezModal-wrap .input-group-cover.list .input-box input {
+    top: -1px;
+}
+.ezModal-wrap .input-group-cover .input-box input {
+    top: -2px;
+}
+.ezModal-wrap .input-group-cover .input-box #ezModal-main-discountCode {
+    width: 85%;
+    height: 38px;
+}
+
+.ezModal-wrap
+    .input-group-cover
+    .input-box
+    #ezModal-main-discountCode::placeholder {
+    text-decoration-line: none;
+    font-weight: bold;
+    color: #999;
+}
+.G-ezModal #ezModal-discountCode .discountCodeBlock .ezModal-input-group input {
+    height: 42px;
+}
+.ezModal-wrap.discountCodeBlock .empty .input-group-cover .claimButton {
+    position: relative;
+    float: left;
+    text-align: center;
+    width: 73px;
+    padding: 1px;
+    cursor: pointer;
+    height: 42px;
+    right: -6px;
+    font-size: 0;
+}
+.ezModal-wrap.discountCodeBlock
+    .input-group-cover
+    .claimButton
+    #discountSubmit {
+    margin: 0;
+    background-color: var(--ez-modal-green-main);
+    background-size: 30%;
+    text-shadow: none;
+    box-shadow: none;
+    font-weight: bold;
+    font-size: 14px;
+    width: 69px;
+    height: 36.5px;
+    line-height: 28.5px;
+    border-radius: 7px;
+    border: 5px solid #fff;
+    display: none;
+}
+
+.ezModal-wrap .input-group-cover.list .claimButton #discountSubmit {
+    margin: 3px;
+    width: 59px;
+    height: 27px;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    line-height: 27px;
+}
+.ezModal-wrap .input-group-cover.list.error .claimButton #discountSubmit {
+    margin-top: 1.5px;
+    margin-left: 5px;
+}
+.ezModal-wrap.discountCodeBlock
+    .input-group-cover
+    .claimButton
+    #discountSubmit.loading {
+    background-color: #6dbe97;
+    border: 5px solid #e3e3e3;
+    background-image: url(../../images/common/btn_loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+}
+.ezModal-wrap.discountCodeBlock
+    .input-group-cover.list
+    .claimButton
+    #discountSubmit.loading {
+    border: 1px solid #e3e3e3;
+}
+
+/*折扣碼票券*/
+.G-ezModal .discountCodeBlock .couponList {
+    padding-top: 30px;
+    position: relative;
+}
+.G-ezModal .discountCodeBlock .couponList.owner {
+    padding-top: 0;
+    position: relative;
+}
+/* 折扣碼領取成功通知 */
+.G-ezModal .discountCodeBlock .couponList .notifyBlock {
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    opacity: 0;
+    transition: 3s;
+    margin-top: 10px;
+}
+.G-ezModal .discountCodeBlock .couponList .notifyBlock.fadeIn {
+    opacity: 1;
+}
+.G-ezModal .discountCodeBlock .couponList .notifyBlock.fadeOut {
+    opacity: 0;
+}
+.G-ezModal .discountCodeBlock .notifyBlock .notifyDiscountCode {
+    display: inline-block;
+    width: 102px;
+    height: 27px;
+    border-radius: 13.5px;
+    background-color: var(--ez-modal-green-main);
+    color: #fff;
+    line-height: 28px;
+    font-weight: bold;
+}
+.G-ezModal .ezModal-discount .notifyBlock {
+    width: 100%;
+    text-align: center;
+}
+.G-ezModal .ezModal-discount.notApply .notifyBlock {
+    width: 100%;
+}
+
+.G-ezModal .ezModal-discount .content-text {
+    text-align: center;
+}
+
+.G-ezModal .ezModal-discount .notifyBlock .btnCloseDiscountCode {
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    font-size: 0;
+    cursor: pointer;
+    top: -2px;
+}
+.G-ezModal .ezModal-discount .notifyBlock .btnClose {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.G-ezModal .ezModal-discount.empty {
+    margin-left: 30px;
+    width: 608px;
+}
+.G-ezModal .ezModal-discount.empty .title {
+    padding: 29px 0 11px 0;
+    font-size: 18px;
+    line-height: 1.1;
+}
+.G-ezModal .ezModal-discount .couponList .title {
+    padding-bottom: 10px;
+}
+
+.G-ezModal .ezModal-discount .couponList.empty {
+    border: solid 1px #ccc;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 50px;
+}
+.G-ezModal .ezModal-discount .couponList.owner {
+    width: 660px;
+    max-height: 499px;
+    min-width: 660px;
+    padding-left: 25px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: #c2c9ca var(--ez-modal-discount-bg);
+    scrollbar-width: thin;
+    z-index: 20;
+    position: relative;
+}
+.G-ezModal .ezModal-discount .couponList.owner.claim {
+    overflow-y: hidden;
+}
+.G-ezModal .ezModal-discount .couponList.owner.claim.scroll:hover {
+    overflow-y: auto;
+}
+.G-ezModal .ezModal-discount .claim + .couponList.owner {
+    padding-left: 26px;
+    scrollbar-color: #dcdcdc #f0f0f0;
+}
+.G-ezModal .discountCodeBlock.claim .ezModal-discount .couponList.owner {
+    max-height: 250px;
+}
+.G-ezModal .discountCodeBlock.claim .ezModal-discount::after {
+    position: absolute;
+    content: '';
+    width: 668px;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: linear-gradient(0deg, #f0f0f0 45%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 6px;
+}
+.G-ezModal .ezModal-discount .couponList.owner .sub-title {
+    font-size: 16px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.G-ezModal .ezModal-discount .couponList.owner .sub-title.none {
+    display: none;
+}
+.G-ezModal .ezModal-discount .couponList.owner.overflowReset {
+    overflow-y: inherit;
+    width: auto;
+}
+.G-ezModal .ezModal-discount .owner::-webkit-scrollbar {
+    width: 8px;
+}
+.G-ezModal .ezModal-discount .owner::-webkit-scrollbar-thumb {
+    background-color: #c2c9ca;
+    border-radius: 3px;
+    height: 56px;
+}
+.G-ezModal .ezModal-discount .owner::-webkit-scrollbar-thumb {
+    background-color: #dcdcdc;
+}
+.G-ezModal .ezModal-discount .owner::-webkit-scrollbar-track-piece {
+    margin-right: 5px;
+}
+.G-ezModal .ezModal-discount .dropdownBackground {
+    width: 273px;
+    position: absolute;
+    transition: opacity 0.1s;
+    transform-origin: 50% 0;
+    display: flex;
+    pointer-events: none;
+    justify-content: center;
+    opacity: 0;
+    z-index: 1050;
+    top: -11%;
+}
+.G-ezModal .ezModal-discount .dropdownBackground.list {
+    top: 0;
+}
+.G-ezModal.open .ezModal-discount .dropdownBackground {
+    opacity: 1;
+    pointer-events: auto;
+}
+.G-ezModal .ezModal-discount .dropdownBackground.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.G-ezModal .ezModal-discount .dropdownBackground.open .discountCodeInfo {
+    opacity: 1;
+    display: block;
+    background: #fff;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    filter: unset;
+    top: 0;
+    pointer-events: auto;
+}
+.G-ezModal .ezModal-discount .dropdownBackground.open .discountCodeInfo > p {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 25px;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+}
+.G-ezModal .ezModal-discount .dropdownBackground .discountCodeInfo::before {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: white;
+    transform: translateY(-50%) rotate(45deg);
+    top: 0;
+    left: 19%;
+    box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.3),
+        0 -5px 5px -5px rgba(0, 0, 0, 0.3);
+}
+.G-ezModal .ezModal-discount .dropdownBackground.list::before {
+    left: 21%;
+    top: 1%;
+}
+.G-ezModal .ezModal-discount .couponList.empty .content {
+    font-size: 14px;
+}
+.G-ezModal .ezModal-discount .couponList.empty .content-title {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+.G-ezModal .ezModal-discount .couponList.empty .content-text {
+    color: #666;
+}
+.G-ezModal .owner .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-bottom: 15px;
+}
+.G-ezModal .owner .content.none {
+    display: none;
+}
+.G-ezModal .owner .ticket {
+    width: 300px;
+    height: 140px;
+    color: #222;
+    background-color: #fff;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+.G-ezModal .owner .apply .ticket:hover {
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.G-ezModal .claim .owner .ticket:hover {
+    box-shadow: none;
+}
+.G-ezModal .owner .ticket:nth-child(odd) {
+    margin-right: 15px;
+}
+.G-ezModal .owner .ticket input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+}
+.G-ezModal .owner .ticket input[type='radio']:checked + label .apply {
+    background-color: var(--ez-modal-green-main);
+    color: #fff;
+    border: 1px solid var(--ez-modal-green-main);
+    font-weight: bold;
+}
+.G-ezModal .owner .ticket input[type='radio']:checked + label .apply::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg height='556' viewBox='0 -46 417.813 417' width='556' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M159.988 318.582c-3.988 4.012-9.43 6.25-15.082 6.25s-11.094-2.238-15.082-6.25L9.375 198.113c-12.5-12.5-12.5-32.77 0-45.246l15.082-15.086c12.504-12.5 32.75-12.5 45.25 0l75.2 75.203L348.104 9.781c12.504-12.5 32.77-12.5 45.25 0l15.082 15.086c12.5 12.5 12.5 32.766 0 45.246zm0 0' fill='%23ffffff'/%3E%3C/svg%3E")
+        no-repeat center;
+    margin-right: 5px;
+    position: relative;
+    display: inline-block;
+    left: -5px;
+    background-size: cover;
+}
+.G-ezModal .owner .ticket label {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #666;
+    font-weight: normal;
+    border-radius: 3px;
+    line-height: 21px;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+}
+.G-ezModal .owner .ticket label.notApply {
+    cursor: default;
+    color: #999;
+    border-radius: 3px;
+}
+.G-ezModal .notApply .owner .ticket label {
+    cursor: default;
+}
+.G-ezModal .owner .ticket label + .claimText {
+    margin-top: -7px;
+    color: var(--ez-error-title-text);
+    font-size: 14px;
+}
+.G-ezModal .owner .ticket label .apply {
+    background-color: #ffffff;
+    position: relative;
+    width: 70px;
+    height: 25px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    color: #222;
+    font-weight: normal;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 18px;
+}
+.G-ezModal .owner .ticket label .apply::before {
+    position: absolute;
+    content: '';
+}
+.G-ezModal .owner .card {
+    float: left;
+    position: relative;
+}
+.G-ezModal .owner .cardLeft {
+    width: 197px;
+    height: 100%;
+    text-decoration: none;
+    border-right: white;
+}
+.G-ezModal .owner .cardLeft .newTag {
+    width: 78px;
+    height: 20px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='20' viewBox='0 0 78 20'%3E%3Cpath fill='%23FF7D19' fill-rule='evenodd' d='M3 0h75l-8.342 16.683A6 6 0 0 1 64.292 20H0V3a3 3 0 0 1 3-3z'/%3E%3C/svg%3E");
+}
+
+.G-ezModal .owner .cardLeft .dateExpire {
+    margin: 20px 0 22px 15px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.G-ezModal .owner .notApply .cardLeft .dateExpire {
+    color: #999;
+}
+.G-ezModal .owner .cardRight {
+    width: 99px;
+    height: 100%;
+    padding: 23px 12px 0 16px;
+}
+.G-ezModal .owner .cardLeft .discountDetail {
+    position: relative;
+    text-align: left;
+    padding: 20px 13px 20px 15px;
+    font-size: 0;
+    height: 78px;
+}
+.G-ezModal .owner .cardRight::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    border-right: 2px dashed #e3e3e3;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.G-ezModal .owner .cardLeft .discountDetail .discountTitle,
+.G-ezModal .owner .cardRight .discountDetail .discountTitle {
+    color: #222;
+    font-size: 14px;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    margin: 0;
+    display: inline-block;
+    max-height: 40px;
+    line-height: 20px;
+    font-weight: bold;
+    overflow: hidden;
+    margin-right: 2px;
+    vertical-align: bottom;
+}
+.G-ezModal .owner .cardRight .discountDetail .discountTitle {
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    height: auto;
+}
+.G-ezModal .owner .over .cardRight .discountTitle {
+    color: #999;
+}
+.G-ezModal .owner .card .discountDetail li:first-of-type {
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    text-decoration: underline;
+    white-space: nowrap;
+    font-weight: 700;
+    display: inline;
+    transition: all 0.5s;
+}
+.G-ezModal .owner .card .detailBlock {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+}
+.G-ezModal .owner .card .detailBlock > li {
+    position: relative;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    max-width: 293px;
+    max-height: 207px;
+    position: absolute;
+    padding: 18px 25px 18px 0;
+    top: -20px;
+    left: 0;
+    transition: all 0.5s;
+    z-index: 1050;
+    pointer-events: none;
+    background-color: #fff;
+    word-break: break-all;
+}
+.G-ezModal.open .ezModal-discount .discountCodeInfo {
+    display: block;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .close-btn {
+    background-image: url(../../images/common/mem-modal/icon-poparticle-noemal.svg);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 7.5px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    cursor: pointer;
+    border-top-right-radius: 4px;
+}
+.G-ezModal .ezModal-discount .trigger-enter > .discountCodeInfo {
+    display: block;
+}
+.G-ezModal .ezModal-discount .trigger-enter-active .discountCodeInfo {
+    opacity: 0;
+    filter: Alpha(opacity=0);
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .infoContainer {
+    overflow-y: hidden;
+    max-height: 121px;
+    max-width: 262px;
+    margin-left: 25px;
+    margin-right: -21px;
+    padding-right: 28px;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo:hover .infoContainer {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #e3e3e3 #fff;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .infoContainer > p {
+    font-size: 14px;
+    font-weight: bold;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo > p {
+    margin: 0 0 10px 0;
+    /* padding-left: 18px; */
+}
+.G-ezModal
+    .ezModal-discount
+    .discountCodeInfo
+    .infoContainer::-webkit-scrollbar {
+    width: 6px;
+    margin-right: 5px;
+}
+.G-ezModal
+    .ezModal-discount
+    .discountCodeInfo
+    .infoContainer::-webkit-scrollbar-thumb {
+    background-color: #e3e3e3;
+    border-radius: 3px;
+    height: 56px;
+}
+.G-ezModal
+    .ezModal-discount
+    .discountCodeInfo
+    .infoContainer::-webkit-scrollbar-track-piece {
+    margin-right: 5px;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .condition {
+    font-weight: normal;
+    color: #222;
+    white-space: nowrap;
+    margin-top: 2px;
+    min-width: 170px;
+    max-width: 250px;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .condition li {
+    line-height: 20px;
+    margin: 0;
+    position: relative;
+    font-size: 14px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-bottom: 5px;
+    padding-left: 15px;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .condition li::before {
+    position: absolute;
+    content: '\25CF';
+    font-size: 6px;
+    color: #999999;
+    display: inline-block;
+    width: 1em;
+    margin-left: -2em;
+    transform: scale(0.5);
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .condition .redeem {
+    color: #666666;
+}
+.G-ezModal .ezModal-discount .cardLeft .notMatch {
+    /*APP限定<p>*/
+    display: none;
+    border-radius: 3px;
+    background-color: #0092ff;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 0 -16px 15px;
+    padding: 0 6px;
+    line-height: 20px;
+}
+.G-ezModal .ezModal-discount .cardLeft .notMatch.credit {
+    background-color: var(--ez-error-title-text);
+}
+.G-ezModal .ezModal-discount .cardLeft .notMatch.credit.bankLimit {
+    display: block;
+}
+.G-ezModal .ezModal-discount .cardLeft .notMatch.app {
+    display: block;
+    margin-right: -8px;
+}
+.G-ezModal .ezModal-discount .content.notApply .notMatch {
+    opacity: 0.5;
+}
+.G-ezModal .ezModal-discount .cardLeft > .discountDetail + div {
+    display: flex;
+    justify-content: left;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .condition ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.G-ezModal .ezModal-discount .discountCodeInfo .condition li:last-child {
+    white-space: normal;
+    max-width: 230px;
+    min-width: 190px;
+}
+/* 請先選擇折扣碼tooltip */
+.G-ezModal #discountCode-use span {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    padding: 2px 24px;
+    white-space: nowrap;
+    border-radius: 3px;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff;
+    color: #222;
+    font-size: 14px;
+    font-weight: normal;
+    z-index: 100;
+}
+.G-ezModal #discountCode-use span:before {
+    content: '';
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    position: absolute;
+    bottom: -12px;
+    left: 38%;
+}
+.G-ezModal #discountCode-use.disabled:hover span {
+    bottom: 57px;
+    visibility: visible;
+    opacity: 1;
+}
+/*折扣碼燈箱(新增成功不適用)*/
+.G-ezModal .ezModal-discount .pillHint {
+    position: relative;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 3px;
+    display: inline-block;
+}
+.G-ezModal .ezModal-discount .card .number {
+    text-align: right;
+    margin: 0 0 20px 0;
+}
+.G-ezModal .ezModal-discount .card .number p {
+    font-size: 14px;
+    color: #222;
+    height: 19px;
+    text-align: right;
+    margin: 0;
+    font-weight: normal;
+}
+.G-ezModal .ezModal-discount .card .number span {
+    color: #666;
+    font-size: 14px;
+    font-weight: normal;
+    display: inline-block;
+    line-height: normal;
+    height: 24px;
+    white-space: nowrap;
+}
+.G-ezModal .ezModal-discount .card .number .cashValueStr {
+    color: #ff8b00;
+    font-size: 20px;
+    font-weight: 700;
+}
+.G-ezModal .ezModal-discount .card .number .cashValueStr.fz18 {
+    font-size: 18px;
+}
+.G-ezModal .ezModal-discount .card .number .cashValueStr.fz16 {
+    font-size: 16px;
+}
+.G-ezModal .owner .notApply .cardLeft .discountDetail .discountTitle,
+.G-ezModal .ezModal-discount .notApply .card .number p,
+.G-ezModal .ezModal-discount .notApply .card .number span,
+.G-ezModal .ezModal-discount .notApply .card .number .cashValueStr {
+    color: #999;
+}
+.G-ezModal .pillHint.grey {
+    background-color: #bbb;
+    padding: 3px 13px 3px 15px;
+    white-space: nowrap;
+    margin-bottom: 4px;
+}
+.G-ezModal .pillHint.notApply {
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    padding-top: 0;
+    margin-bottom: 30px;
+}
+/* 商品頻道---折扣碼領取 */
+.G-ezModal .discountCodeBlock.claim .ticket {
+    width: 300px;
+    height: 100px;
+    background-color: none;
+    background: url(../../images/common/discount-modal/orange_coupon.svg)
+        no-repeat center;
+    padding: 0;
+    margin-top: 0;
+}
+.G-ezModal .discountCodeBlock.claim .ticket.over {
+    margin-bottom: 36px;
+    background: url(../../images/common/discount-modal/gray_coupon.svg)
+        no-repeat center;
+}
+.G-ezModal .discountCodeBlock.claim .ticket.received {
+    margin-bottom: 36px;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardLeft {
+    width: 102px;
+    color: #fff;
+    border: none;
+    text-align: center;
+    padding: 20px 0 21px 0;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardLeft ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardLeft li {
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardLeft li:nth-child(2) {
+    font-size: 22px;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardRight {
+    padding: 10px 20px;
+    width: 198px;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardRight .discountDetail {
+    height: 100%;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .cardRight:before {
+    content: none;
+}
+.G-ezModal .discountCodeBlock.claim .ticket:hover {
+    filter: drop-shadow(0 0 5px rgb(0, 0, 0, 0.3));
+}
+.G-ezModal .discountCodeBlock.claim .ticket:nth-child(odd) {
+    margin-right: 16px;
+}
+.G-ezModal .discountCodeBlock.claim .ticket .expire {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 11px;
+}
+.discountCodeBlock .ticket input {
+    position: absolute;
+    opacity: 0;
+}
+.discountCodeBlock input[type='checkbox']:checked + label .apply {
+    background-color: #bbbbbb;
+    color: #fff;
+}
+.G-ezModal .discountCodeBlock.claim .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 34%;
+}
+.G-ezModal .discountCodeBlock.claim .info .detailBlock > li {
+    font-size: 12px;
+    font-weight: bold;
+    color: #999999;
+    text-decoration: underline;
+}
+.G-ezModal .owner .ticket label .pillHint.claim.apply {
+    text-align: left;
+    width: 60px;
+    height: 25px;
+    border-radius: 3px;
+    line-height: 25px;
+    position: relative;
+}
+.G-ezModal .owner .ticket label .pillHint.claim.apply::before {
+    position: absolute;
+    content: '領取';
+    width: 60px;
+    height: 25px;
+    text-align: center;
+}
+.G-ezModal .owner .ticket label .pillHint.claim.apply.loading::before {
+    content: '';
+    background: #ccc;
+    background-size: 30%;
+    background-image: url(../../images/common/btn_loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.G-ezModal .discountCodeBlock.claim .ticket label .pillHint.apply {
+    margin-bottom: 0;
+}
+.G-ezModal
+    .discountCodeBlock
+    .owner
+    input[type='checkbox']:checked
+    + label
+    .apply::before {
+    content: '已領';
+    cursor: not-allowed;
+}
+.G-ezModal
+    .discountCodeBlock
+    .ticket.over
+    input[type='checkbox']:checked
+    + label
+    .apply::before {
+    content: '兌換完畢';
+}
+/* 分享訂單 */
+.G-ezModal #ez-order-share .ezModal-flowChart {
+    height: auto;
+    width: auto;
+    margin-top: 33px;
+}
+.G-ezModal #ez-order-share .ezModal-flowChart .ezModal-steps:not(:last-child) {
+    margin-right: 40px;
+}
+.G-ezModal #ez-order-share .ezModal-flowChart + .desc-text {
+    line-height: 1.73;
+    margin-bottom: 3px;
+}
+.G-ezModal #ez-order-share .ezModal-flowChart + .desc-text + .desc-text {
+    margin-top: 0;
+}
+.G-ezModal #ez-order-share .scam-alert-text + .ezModal-wrap .ezModal-h1 {
+    padding-top: 20px;
+}
+.G-ezModal #ez-order-share form {
+    width: 240px;
+    margin: auto;
+    padding-top: 4px;
+}
+.G-ezModal #ez-order-share .ezModal-authCode-input {
+    display: flex;
+    margin-bottom: 9px;
+    border: solid 1px #bbbbbb;
+    height: 40px;
+    align-items: center;
+}
+.G-ezModal #ez-order-share .ezModal-authCode-input input {
+    width: 139px;
+    margin-right: 8px;
+    position: relative;
+    border: none;
+    outline: none;
+}
+.G-ezModal #ez-order-share .ezModal-authCode-input input::placeholder {
+    font-size: 13px;
+}
+.G-ezModal #ez-order-share .ezModal-authCode-input input + button {
+    width: 85px;
+    height: 28px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 28px;
+    margin-right: 5px;
+    transition: all linear;
+    background-color: #e7faf1;
+    color: var(--ez-modal-green-dark);
+    border: none;
+}
+.G-ezModal #ez-order-share .ezModal-authCode-input input + button.disabled {
+    color: #999;
+    background-color: #eef2f3 !important;
+    border: #fff !important;
+}
+.G-ezModal #ez-order-share .ezModal-input-group + .ezModal-btn-center {
+    margin-bottom: 16px;
+    margin-top: 10px;
+}
+.G-ezModal #ez-order-share .ezModal-input-group + .ezModal-btn-center button {
+    width: 100%;
+}
+.G-ezModal #ez-order-share .desc-text {
+    font-size: 15px;
+}
+.G-ezModal #ez-order-share .info-text {
+    font-size: 13px;
+    color: #666;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-40%);
+    margin-bottom: 40px;
+}
+
+.G-ezModal #ez-order-share .info-text a {
+    position: relative;
+    color: #666;
+    text-decoration: none;
+}
+.G-ezModal #ez-order-share .info-text a::before {
+    position: absolute;
+    content: '';
+    background-image: url(../../images/common/member/nav-info.svg);
+    width: 16px;
+    height: 17px;
+    left: -1.5em;
+}
+.G-ezModal #ez-order-share .scam-alert-text {
+    font-size: 13px;
+    background-color: #fafafa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.G-ezModal #ez-order-share .scam-alert-text span {
+    position: relative;
+    display: block;
+    max-width: 360px;
+    margin: auto;
+}
+.G-ezModal #ez-order-share .scam-alert-text span::before {
+    position: absolute;
+    content: '';
+    background-image: url(../../images/common/member/notify-alert-fill.svg);
+    width: 18px;
+    height: 16px;
+    left: -1.5em;
+    background-size: cover;
+}
+.G-ezModal #ez-order-share .ezModal-greenBtn.disabled {
+    background-color: var(--ez-modal-green-btn-disabled) !important;
+    border: 1px solid var(--ez-modal-green-btn-disabled) !important;
+    width: 100%;
+}
+.G-ezModal #ez-order-share .text-center {
+    text-align: center;
+}
+.G-ezModal #ez-order-share .modal-title,
+.G-ezModal #ezModal-vertify .modal-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+#ezModal-vertify .modal-title.warn,
+#ez-order-share .modal-title.warn {
+    color: var(--ez-error-title-text);
+}
+#ez-order-share .modal-title.check {
+    color: var(--ez-modal-green-dark);
+}
+.G-ezModal #ezModal-vertify .modal-img,
+.G-ezModal #ez-order-share .modal-img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-size: cover;
+}
+#ezModal-vertify .title-content {
+    padding-top: 10px;
+}
+#ezModal-vertify .modal-img.warn,
+#ez-order-share .modal-img.warn {
+    background-image: url(../../images/common/member/icon-notify-warning.svg);
+}
+#ez-order-share .modal-img.check {
+    background-image: url(../../images/common/member/icon-success.svg);
+}
+#ezModal-vertify .title-content.break .modal-img,
+#ez-order-share .title-content.break .modal-img {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+#ezModal-vertify .title-content.break .modal-title,
+#ez-order-share .title-content.break .modal-title {
+    display: block;
+    text-align: center;
+}
+#ezModal-vertify .title-content.break + .desc-text,
+#ez-order-share .title-content.break + .desc-text {
+    margin-bottom: 20px;
+}
+.G-ezModal #ez-order-share .ezModal-h1.pt60 {
+    margin-bottom: 20px;
+}
+.G-ezModal #ez-order-share .ezModal-h1.pt60 .modal-title {
+    margin-bottom: 0;
+}
+.G-ezModal #ez-order-share .ezModal-h1.pt60 + p.desc-text {
+    margin-bottom: 20px;
+}
+#ez-order-share .ezModal-input-box {
+    padding: 0;
+    height: 40px;
+}
+#ez-order-share .ezModal-input-box input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    height: 99%;
+    padding-left: 30px;
+}
+.rwd #ez-order-share .ezModal-input-box input[type='email'] {
+    font-size: 14px;
+}
+#ez-order-share .ezModal-input-box input::placeholder {
+    font-size: 13px;
+}
+
+.rwd .G-ezModal #ez-order-share .ezModal-wrap {
+    height: auto;
+    border-radius: 0;
+}
+.rwd .G-ezModal #ez-order-share .scam-alert-text + .ezModal-wrap {
+    height: auto;
+}
+.rwd .G-ezModal #ez-order-share .info-text {
+    margin-bottom: auto;
+}
+.rwd .G-ezModal #ez-order-share .ezModal-h1 {
+    margin-top: 40px;
+    margin-bottom: 25px;
+    padding-top: 0;
+}
+.rwd .G-ezModal #ez-order-share .ezModal-h1.title-content {
+    margin-bottom: 0;
+}
+.rwd .G-ezModal #ez-order-share .scam-alert-text + .ezModal-wrap .ezModal-h1 {
+    margin-top: 10px;
+    padding-top: 0;
+}
+.rwd .G-ezModal #ez-order-share form {
+    padding-top: 4px;
+}
+.rwd #ez-order-share .scam-alert-text {
+    border-radius: 0;
+    text-align: left;
+    margin-bottom: 0;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    margin-top: 0;
+}
+.rwd #ez-order-share .scam-alert-text span {
+    padding-left: 45px;
+    padding-right: 43px;
+    max-width: inherit;
+    margin: inherit;
+}
+.rwd #ez-order-share .scam-alert-text span::before {
+    left: 1.5em;
+}
+/* m版 */
+
+@media only screen and (max-width: 559px) {
+    /* 收藏 */
+    .rwd .G-ezModal .prodtrack-wrap {
+        transform: translateY(30%);
+    }
+    .rwd .G-ezModal .prodtrack-wrap * {
+        margin-bottom: 25px;
+    }
+    .rwd .G-ezModal {
+        height: 100% !important;
+        padding: 0 !important;
+    }
+    .rwd .G-ezModal-modal-show .modal-backdrop {
+        display: none;
+    }
+    .rwd .G-ezModal .G-ezModal-modal-dialog {
+        height: 100%;
+    }
+    .rwd .G-ezModal.fade .G-ezModal-modal-dialog {
+        opacity: 0;
+        -webkit-transform: translate(0, 100%);
+        -moz-transform: translate(0, 100%);
+        -ms-transform: translate(0, 100%);
+        -o-transform: translate(0, 100%);
+        transform: translate(0, 100%);
+        -webkit-transition: transform 0.5s ease, opacity 0.5s ease;
+        -moz-transition: transform 0.5s ease, opacity 0.5s ease;
+        -ms-transition: transform 0.5s ease, opacity 0.5s ease;
+        -o-transition: transform 0.5s ease, opacity 0.5s ease;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .rwd .G-ezModal.fade.in .G-ezModal-modal-dialog {
+        opacity: 1;
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        top: 0;
+    }
+
+    .rwd .G-ezModal.fade.show .G-ezModal-modal-dialog {
+        opacity: 1;
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        top: 0;
+    }
+
+    .rwd .G-ezModal .G-ezModal-modal-content {
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .rwd .G-ezModal .G-ezModal-modal-wrap {
+        height: 100% !important;
+    }
+
+    .rwd .G-ezModal .ezModal-main-left {
+        display: none;
+    }
+
+    .rwd .G-ezModal .ezModal-main-right {
+        width: auto;
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+
+    .rwd .G-ezModal .ezModal-wrap {
+        padding: 20px 15px;
+    }
+
+    .rwd .G-ezModal .ezModal-h1,
+    .rwd .G-ezModal .ezModal-h2,
+    .rwd .G-ezModal .ezModal-h2-icon,
+    .rwd .G-ezModal .ezModal-middle,
+    .rwd .G-ezModal .ezModal-socialBind {
+        width: 100%;
+    }
+
+    .rwd .G-ezModal .ezModal-h2 br,
+    .rwd .G-ezModal .ezModal-h2-icon br {
+        display: none;
+    }
+
+    .rwd .G-ezModal #ezModal-main .ezModal-input-group input {
+        width: 80%;
+    }
+
+    .rwd .G-ezModal .ezModal-main-bottom {
+        position: static;
+        margin: 30px 0;
+    }
+
+    .rwd .G-ezModal .ezModal-steps-content {
+        font-size: 13px;
+    }
+
+    .rwd .G-ezModal .ezModal-resetPsw-authCode-email {
+        width: 310px;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg-wrap {
+        height: 440px;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg {
+        width: 300px;
+        height: auto;
+        margin: 30px auto;
+        position: relative;
+        float: none;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg-hr {
+        width: 87%;
+        height: 1px;
+        background-color: #dcdcdc;
+        margin: auto;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg-image {
+        height: 26px;
+        margin-top: 0;
+        position: absolute;
+        top: -5px;
+        left: 63px;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg-socialIcon {
+        width: 20px;
+        height: 20px;
+        top: -2px;
+        left: 82px;
+        z-index: 1;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg-ezMemIcon {
+        background-image: url(../../images/common/mem-modal/socialReg-rwd-ezMem.svg);
+        width: 46px;
+        height: 28px;
+        margin-top: 0;
+        position: absolute;
+        left: 29px;
+        top: -5px;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg-newMemIcon {
+        background-image: url(../../images/common/mem-modal/socialReg-rwd-newMem.svg);
+        width: 46px;
+        height: 28px;
+        margin-top: 0;
+        position: absolute;
+        left: 58px;
+        top: -5px;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg span {
+        margin: -15px 0 0 15px;
+        display: inline-block;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg .ezModal-socialReg-desc {
+        margin: 20px auto;
+    }
+
+    .rwd .G-ezModal .ezModal-socialReg:last-child {
+        border: none;
+    }
+}
+/*  Apple 隱私信箱
+  .rwd .G-ezModal .ezModal-socialPrivate-image{
+    margin-bottom: 6px;
+  }
+  .rwd .G-ezModal .ezModal-socialPrivate-wrap span {
+    font-size: 16px;
+    line-height: 1.88em;
+    margin-bottom: 60px;
+  } */
+
+/* mweb 將 保持登入狀態 隱藏 */
+.rwd .G-ezModal .ezModal-main-checkbox-group .ezModal-main-checkboxLabel {
+    display: none;
+}
+
+/**
+  折扣碼燈箱m版
+  */
+.rwd .G-ezModal .G-ezModal-modal-close-btn.back {
+    background-image: url(../../images/common/mem-modal/ic-back-dark.svg);
+    left: 10px;
+    background-position: center;
+    width: 28px;
+    height: 28px;
+    top: 12px;
+    z-index: 100;
+}
+.rwd .G-ezModal .back.G-ezModal-btn-hover:hover {
+    background-position: center;
+    background-color: transparent;
+}
+.rwd .ezModal-wrap .ezModal-discount {
+    width: 100%;
+    margin: auto;
+    margin-left: 0;
+}
+.rwd .G-ezModal .ezModal-wrap.discountCodeBlock {
+    padding: 95px 0 0 0;
+    background-color: #f3f3f3;
+    overflow-y: auto;
+    border-radius: 0;
+}
+.rwd .discountCodeBlock .coupon {
+    width: 100%;
+    margin: 10px auto;
+}
+.rwd .G-ezModal .discountCodeBlock .couponList {
+    background-color: #f3f3f3;
+    padding: 10px 16px;
+}
+.rwd .discountCodeBlock .ticket {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei' !important;
+    position: relative;
+    border-radius: 0 10px 10px 0;
+    height: 100px;
+}
+
+.rwd .discountCodeBlock .ticket.left {
+    background-image: url(../../images/common/discount-modal/bg-coupon-1.svg);
+    min-width: 128px;
+}
+.rwd .discountCodeBlock .notApply .ticket.left {
+    background-image: url(../../images/common/discount-modal/bg-coupon-2.svg);
+}
+.rwd .discountCodeBlock .ticket.right {
+    background-color: #fff;
+    color: #4a4a4a;
+    width: 100%;
+    margin-left: -2px;
+    display: flex;
+    justify-content: space-between;
+}
+.rwd .discountCodeBlock .discount_number {
+    color: #fff;
+    padding: 22px 16px;
+}
+.rwd .discountCodeBlock .discount_number._app,
+.rwd .discountCodeBlock .discount_number.true {
+    padding: 10px 12px;
+}
+.rwd .discountCodeBlock .discount_number._app {
+    padding: 10px 12px;
+}
+.rwd .discountCodeBlock .discount_number > p:first-child {
+    font-size: 12px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.rwd .discountCodeBlock .discount_number > p:nth-child(3) {
+    font-size: 14px;
+    line-height: 1.43;
+    margin: 0;
+    font-weight: normal;
+}
+.rwd .discountCodeBlock .discount_number > p:nth-child(2) {
+    margin: 0;
+    height: 18px;
+}
+.rwd .discountCodeBlock .discount_number > p:nth-child(2) span {
+    white-space: nowrap;
+}
+.rwd .discountCodeBlock .discount_number > p:nth-child(3) span {
+    font-size: 26px;
+    line-height: 1.46;
+    margin: 0;
+    font-weight: 600;
+}
+.rwd .discountCodeBlock .discount_number > p:nth-child(3) span.fz16 {
+    font-size: 20px;
+    line-height: 2;
+}
+.rwd .discountCodeBlock .discount_number > p:nth-child(3) span.fz18 {
+    font-size: 22px;
+    line-height: 2;
+}
+.rwd .discountCodeBlock .discount_number > .discount_tag .device {
+    display: none;
+    width: 48px;
+    height: 18px;
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 4px;
+    background-color: #0092ff;
+}
+.rwd .discountCodeBlock .discount_number > .discount_tag .device.new {
+    width: 38px;
+    background: white;
+    color: #FF8B00;
+    margin-right: 4px;
+}
+.rwd .discountCodeBlock .discount_number > .discount_tag .device._app {
+    display: inline-block;
+}
+.rwd .discountCodeBlock .discount_number > .discount_tag .device.new.true {
+    display: inline-block;
+}
+.rwd .G-ezModal-modal-wrap .input-group {
+    display: flex;
+    justify-content: space-around;
+    padding: 2.6%;
+    padding-top: 5px;
+}
+.rwd .G-ezModal-modal-wrap .inputTitleBlock {
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    z-index: 50;
+    border-bottom: 0.5px solid #bbb;
+}
+.rwd .discountCodeBlock .checkStatus {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../images/common/discount-modal/ic-radio-button-off.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    margin: auto;
+}
+.rwd .discountCodeBlock label {
+    cursor: pointer;
+    display: flex;
+}
+.rwd .discountCodeBlock .notApply label {
+    cursor: default;
+}
+.rwd .discountCodeBlock .label.notApply {
+    display: none;
+}
+.rwd .discountCodeBlock input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: auto;
+}
+.rwd .discountCodeBlock input[type='radio']:checked + label .checkStatus {
+    background-image: url(../../images/common/discount-modal/ic-radio-button-on.svg);
+}
+.rwd .discountCodeBlock .discountTitle {
+    padding: 16px 16px 0 16px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 22px;
+    color: #222;
+    max-height: 64px;
+    overflow: hidden;
+}
+.rwd #ezModal-main.G-ezModal-modal-wrap {
+    position: relative;
+}
+.rwd #ezModal-main.G-ezModal-modal-wrap .discountClaim {
+    margin: 0;
+    overflow: visible;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+    width: auto;
+    min-width: 56px;
+    height: 36px;
+    border: none;
+    border-radius: 5px;
+    background-color: #bbb;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 12px;
+    vertical-align: bottom;
+    line-height: 36px;
+}
+.rwd #ezModal-main.G-ezModal-modal-wrap .discountClaim.ezModal-greenBtn {
+    height: 36px;
+    line-height: 36px;
+    margin: 0;
+    box-shadow: none;
+}
+.rwd .discountCodeBlock .label {
+    width: 22%;
+    order: 2;
+}
+.rwd .discountCodeBlock .detail {
+    order: 1;
+    width: 78%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+.rwd .discountCodeBlock .expire {
+    padding: 4px 16px 16px 16px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    font-weight: normal;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.rwd .G-ezModal-modal-wrap #ezModal-main-discountCode {
+    outline: none;
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: #222222;
+    border: none;
+    font-size: initial;
+    text-indent: 16px;
+    width: 90%;
+    padding: 3px 0 0 1px;
+    background-color: transparent;
+    margin: 0;
+    vertical-align: initial;
+    cursor: inherit;
+    box-shadow: none;
+    height: 32px;
+    line-height: normal;
+}
+
+.rwd .G-ezModal-modal-wrap .input-box {
+    width: 80%;
+    height: 36px;
+    border-radius: 5px;
+    border: solid 0.5px #bbb;
+    margin-right: 6px;
+}
+.rwd .G-ezModal-modal-wrap .input-box.loading {
+    border-color: #cccccc;
+    background-color: #e3e3e3;
+}
+.rwd .G-ezModal-modal-wrap .input-box .close-btn {
+    display: none;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    object-fit: contain;
+    background-image: url(../../images/common/mem-modal/ic-text-field-clear.svg);
+    position: relative;
+    top: 1px;
+}
+.rwd .G-ezModal-modal-wrap .modalTitle {
+    text-align: center;
+    padding-top: 5px;
+    height: 44px;
+    line-height: 44px;
+}
+.rwd .discountCodeBlock .couponTip {
+    color: #ff8b00;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 auto;
+}
+.rwd .discountCodeBlock .couponTip.empty {
+    margin-top: 132px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    font-weight: 600;
+}
+.rwd .discountCodeBlock .couponTip.notApply {
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    margin: 12px auto;
+    width: 91%;
+    max-width: 343px;
+}
+.rwd .discountCodeBlock .couponTip.notApply::after,
+.rwd .discountCodeBlock .couponTip.notApply::before {
+    position: absolute;
+    content: '';
+    width: 30.4%;
+    background-color: #bbb;
+    height: 1px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.rwd .discountCodeBlock .couponTip.notApply::after {
+    left: 0;
+}
+.rwd .discountCodeBlock .couponTip.notApply::before {
+    right: 0;
+}
+.rwd .blurBackground {
+    background: hsla(0, 0%, 0%, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+.rwd .blurBackground::before {
+    position: absolute;
+    content: '';
+    filter: blur(5px);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.rwd .mweb-alert * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.rwd .mweb-alert *:focus {
+    outline: 0;
+}
+.rwd .mweb-alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -135px;
+    width: 270px;
+    min-height: 106px;
+    text-align: center;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei';
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 14px;
+    overflow: hidden;
+    z-index: 2500;
+    background-color: rgba(248, 248, 248, 0.84);
+}
+.rwd .mweb-alert .inner {
+    padding: 19px 16px;
+}
+.rwd .mweb-alert .text {
+    margin-top: 5px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+}
+.rwd .mweb-alert .text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    margin: auto;
+    height: 1px;
+    width: 100%;
+    background-color: #c4c4c4;
+    z-index: 2500;
+}
+.rwd .mweb-alert .button {
+    position: relative;
+    width: 100%;
+    font-family: 'Gudea', 'Heiti', '微軟正黑體', 'Microsoft JhengHei' !important;
+    font-weight: 600;
+    height: 45px;
+    line-height: 45px;
+    font-size: 17px;
+    color: #007aff;
+    border-radius: 0 0 14px 14px;
+    cursor: pointer;
+}
+/* login 驗證碼登入 */
+.rwd .G-ezModal #ezModal-captchaLogin-verifyBtn .ezModal-whiteBtn:first-child {
+    margin-right: 0px;
+}
+/* override mweb style */
+.rwd .G-ezModal a {
+    display: inline;
+}
+
+.rwd .G-ezModal .ezModal-linkWrap {
+    font-size: initial;
+    line-height: initial;
+}
+.rwd .G-ezModal .ez-order-share .G-ezModal-modal-close-btn {
+    border-top-right-radius: 0;
+}
