@@ -1,0 +1,692 @@
+* {
+    outline: none;
+  }
+  
+  #headerRange {
+    border: 1px solid #dedede;
+  }
+  
+  #header {
+    width: 1233px; 
+    left: 25%;
+    margin:auto;
+    display: flex;
+    /* flex-wrap: wrap;  */
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    background-color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  
+  .header_logo {
+    margin: 0;
+    padding: 0 ;
+    width: 173px;
+    height: 40px;
+    background: url(https://static-test.cdn-eztravel.com/www/api/12882c9/images/eztravel-logo.svg) 0 0 no-repeat;
+    margin-top: 12px;
+    overflow: hidden;
+    display: inline-block;
+    order: 1;
+    flex: 0.315;
+  }
+  
+  #header_main_menu { 
+    /* padding-left: -30%; */
+    display: inline-block;
+    margin-top: 0; 
+    margin-left: 20px;
+    overflow: hidden;
+    order: 2;
+    flex: 1.15;
+   }
+  
+  .main_menu_dc {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  
+  a {
+    text-decoration:none;
+  }
+  
+  .dropdown_main_menu>a {
+    padding: 16px ;
+    color: #222;
+    font-weight: 700;
+  }
+  
+  .dropdown_main_menu>a:hover {
+    background-color: #f1f7f8;
+  }
+  
+  .headerOther {
+    order:3;
+    flex: 0.7 ;
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+  }
+  
+  .headerOther>a {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .header_track{
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+  }
+  
+  #follow_line {
+    padding: 4px;
+    color: #cac6c6b6;
+  }
+  
+  /* 顯示向下三角符號 */
+  .spanText:after {
+    content: "";
+    margin: 0 0 2px 5px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-color: #222 transparent;
+    border-style: solid;
+    border-width: 5px 4px 0;
+  }
+  
+  .checkOrder {
+    color: #222;
+    font-size: 14px;
+  }
+  
+  .logbtn> a.login_a {
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 3px;
+    background-color: #55d040;
+    color: #fff;
+    margin: 0 10px;
+    padding: 5px 13.5px;
+  }
+  
+  .logbtn> a.sighUp_a {
+    color: #119d36;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .subMenuDc {
+    top: 50px;
+    height: 129px;
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    background-color: #f1f7f8;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 40%);  
+    border-top: 1px solid #dedede;
+  }
+  
+  .sub_menu {
+    margin: 0 auto;
+    /* padding: 15px 0; */
+    left: 29.5%;
+    top: 20px;
+    background-color: #f1f7f8;
+    position: absolute;
+    list-style-type: none;
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    align-items: center;
+  }
+  
+  .b_type {
+    font-weight: 700;
+    position: relative;
+  }
+  
+  .sub_menu_item {
+    width: 100px;
+    font-size: 14px;
+    color: #222;
+  }
+  
+  /* 指定位置顯示 */
+  .sub_menu>li {
+    width: 25%;
+    margin: 7.5px 0;  
+  }
+  
+  .b_type::before {
+    content: "";
+    position: absolute;
+    left: -21px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 50%;
+    background-image: url(https://static.cdn-eztravel.com/www/api/eb98605/images/icon-submenu-highlight.svg);
+  }
+  
+  /* 子選單隱藏 */
+  .subMenuDc {
+    display: none;
+  }
+  
+  /* 主選單換色 */
+  .dropdown_main_menu>a:hover  {
+    color: #0c9251;
+  }
+  
+  /* 滑鼠滑入展開次選單*/
+  ul > div.main_menu_dc li:hover > div.subMenuDc  { 
+    display: block;
+  }
+  /* 企業服務、客制旅遊 字體換色 */
+  .headerOther>a:hover {
+    color: #0c9251;
+  }
+  
+  .sub_menu > li a:hover {
+    color: #0c9251;
+  }
+  
+  .subTrackItem>ul {
+    padding: 0px 0 0px 13px;
+    list-style-type: none;
+  }
+  
+  .subTrackItem {
+    background-color: #fff;
+    z-index: 10;
+    top: 50px;
+    left: 67.5%;
+    display: none;
+    position:fixed;
+    border-radius: 10px;
+    height: 187px;
+    width: 130px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 1px 18px 0 rgba(0,0,0,.12),0 6px 10px 0 rgba(0,0,0,.14);
+  }
+  
+  .trackLine {
+    background-image: url(https://static.cdn-eztravel.com/www/api/eb98605/images/header-line.svg);
+  }
+  
+  .trackFB {
+    background-image: url(https://static.cdn-eztravel.com/www/api/eb98605/images/header-fb.svg);
+  }
+  
+  .trackBG {
+    background-image: url(https://static.cdn-eztravel.com/www/api/eb98605/images/header-blog.svg);
+  }
+  
+  .trackIG {
+    background-image: url(https://static.cdn-eztravel.com/www/api/eb98605/images/header-ig.svg);
+  }
+  
+  .trackYT {
+    background-image: url(https://static.cdn-eztravel.com/www/api/eb98605/images/header-yt.svg);
+  }
+  
+  .subTrackItem > ul li{
+    background-color: #fff;
+  }
+  
+  .subTrackItem > ul li > a {
+    display: block;
+    font-size: 14px;
+    color: #222;
+    padding: 7.5px 0 7.5px 35px;
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-color: #fff;
+  }
+  
+  /* 三角符號 */
+  .subTrackItem:before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    z-index: 10;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-color: transparent transparent #fff;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 0 10px 13px;
+  }
+  
+  .header_track:hover > div.subTrackItem {
+    display:block;
+  }
+  
+  .orderSerices>ul {
+    padding: 0;
+    margin-top: 10px;
+    list-style-type: none;
+  }
+  
+  .orderSerices{
+    z-index: 10;
+    background-color: #fff;
+    position: fixed;
+    text-align: center;
+    top: 50px;
+    left: 71.5%;
+    display: none;
+    border-radius: 10px;
+    height: 217px;
+    width: 130px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 1px 18px 0 rgba(0,0,0,.12),0 6px 10px 0 rgba(0,0,0,.14);
+  }
+  
+  .orderSerices > ul li > a {
+    display :block;
+    font-size: 14px;
+    color: #222;
+    padding: 7px 0 7px 0px;
+  }
+  
+  /* 三角符號 */
+  .orderSerices:before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-color: transparent transparent #fff;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 0 10px 13px;
+  }
+  
+  .checkOrder:hover > div.orderSerices {
+    display:block;
+  }
+  
+  .Div_lock_1 {
+    height: 100%;
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+  
+  .block_content {
+    grid-gap: 120px;
+    width: 1133px; 
+    /* width: 59%; */
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .block_display {
+    order: 1;
+    flex: 1;
+    height: 700px;
+    background-image: url(https://static.cdn-eztravel.com/www/home/images/contact-bg.svg);
+    background-position: 0 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .blockRight {
+    order: 2;
+    flex: 1 ;
+    height: 700px;
+  }
+  
+  .title_h {
+    font-size: 32px;
+  }
+  
+  .block_display > p.p_1 {
+    font-weight: 700;
+    color: #222;
+    font-size: 20.5px;
+  }
+  
+  .title_h:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    height: 0;
+    border-color: #11d073 transparent transparent;
+    border-style: solid;
+    border-width: 36px 36px 0 0;
+  }
+  
+  .p_0 {
+    font-size: 16px;
+    display: inline;
+  }
+  
+  .block_display > p.p_3 {
+    color: #ff8b00;
+  }
+  
+  .block_display > p.p_5 {
+    display: inline;
+  }
+  
+  .p_4 {
+    cursor: pointer;
+    color: #ff8b00;
+    text-decoration: underline;
+  }
+  
+  .p_6{
+    font-size: 14px;
+  }
+  
+  .input_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    width: 497px;
+    height: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.14);
+    border: 1px solid #dedede;
+  }
+  
+  .input_1 > span {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    padding: 0 10px 0 10px;
+    font-size: 14px;
+  }
+  
+  .input_1 > span:after {
+    content: "";
+    margin: 0 0 2px 425px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-color: #222 transparent;
+    border-style: solid;
+    border-width: 5px 4px 0;
+  }
+  .list_content {
+    border: 1px solid #dedede;
+  }
+  
+  .list_content:hover {
+    border: 1px solid rgb(27, 235, 27);
+  }
+  
+  .Itemlist>ul {
+    list-style-type: none;
+  }
+  
+  .Itemlist {
+    background-color: #fff;
+    position: absolute;
+    z-index: 4;
+    display: none;
+    height: 160px;
+    overflow-y:auto;
+    width: 495px;
+    margin-top: 195px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 1px 18px 0 rgba(0,0,0,.12),0 6px 10px 0 rgba(0,0,0,.14);
+    border: 1px solid #dedede;
+  }
+  
+  .Itemlist>ul li {
+    margin: 0px 0px 0px -25px;
+    padding: 4px 0px 4px 0px ;
+  }
+  
+  .Itemlist ul li:hover {
+    background-color: #a0ecc7;
+  }
+  
+  .input_1:hover > div.Itemlist  {
+    display: block;
+  }
+  
+  .moredata {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .p_7 {
+    margin-top: 27px;
+    font-size: 14px;
+  }
+  
+  .input_2 {
+    margin-left: 1px;
+    margin-top: -10px;
+    padding: 5px 10px;
+    width: 480px;
+    height: 76px;
+  }
+  
+  .input_2:focus-visible {
+    border: 1px solid #11d073;  
+  }
+  
+  
+  .input_2:hover {
+    border: 1px solid #11d073;  
+  }
+  
+  .p_8 {
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  
+  .input_3:focus-visible {
+    border: 1px solid #11d073;  
+  }
+  
+  .input_3:hover {
+    border: 1px solid #11d073;  
+  }
+  
+  .custnm {
+    margin-top: -10px;
+    display: block;
+  }
+  
+  .input_3 {
+    padding: 0px 10px ;
+    display: inline;
+    width: 50%;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+  }
+  
+  .botton2 {
+    text-align: center;
+    display: block;
+    width: 75px;
+    height: 30px;
+    margin: -32px 0px 0px 425px;
+    border: 1px solid #dedede;
+  }
+  
+  .botton1 {
+    text-align: center;
+    display: block;
+    width: 75px;
+    height: 30px;
+    margin: -33px 0px 0px 315.5px;
+    border: 1px solid #11d073;
+  }
+  
+  .botton2:hover {
+    border: 1px solid #11d073;
+    cursor: pointer;
+  }
+  
+  .botton1:hover {
+    border: 1px solid #11d073;
+    cursor: pointer;
+  }
+  
+  .botton2:focus-visible {
+    border: 1px solid #11d073;  
+  }
+  
+  .botton1:focus-visible {
+    border: 1px solid #11d073;  
+  }
+  
+  .p_9{
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  
+  .input_4 {
+    margin-top: -10px;
+    display: inline;
+    width: 495px;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+  }
+  
+  .input_4:focus-visible {
+    border: 1px solid #11d073;  
+  }
+  
+  .input_4:hover {
+    border: 1px solid #11d073;  
+  }
+  
+  .p_10 {
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  
+  .input_5 {
+    margin-top: -10px;
+    display: inline;
+    width: 495px;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+  }
+  
+  .input_5:focus-visible {
+    border: 1px solid #11d073;  
+  }
+  
+  .input_5:hover {
+    border: 1px solid #11d073;  
+  }
+  
+  .botton_block {
+    margin: 30px;
+  }
+  
+  .btn_resut {
+    top : 20px;
+    font-size: 20px;
+    height: 40px;
+    width: 150px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+  }
+  
+  .btn_submit {
+    top : 20px;
+    background-color: #11d073;
+    color: white;
+    font-size: 20px;
+    height: 40px;
+    margin: 0px 0px 0px 42.5px;
+    width: 150px;
+    border-radius: 3px;
+    border: 1px solid #11d073;
+  }
+  
+  .btn_submit:hover {
+    cursor: pointer;
+    background-color: #0b8347;
+    border: 1px solid #0b8347;
+  }
+  
+  .btn_resut:hover {
+    cursor: pointer;
+    background-color: #dae1e1;
+    border-color: #dae1e1;
+  }
+  
+  body{
+    -webkit-user-select: none; 
+    -webkit-user-drag: none;
+    margin: 0;
+    font-weight: 400;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 700px;
+  }
+    
+  .exland {
+    /* margin: 135px 0px 0px 0px; */
+    border: 1px solid #0b8347;
+    border-left: none;
+    border-right: none;
+    border-bottom:none;
+    margin-bottom: 100%;
+  }
+  
+  .landMenu {
+    margin: auto;
+    /* width: 65%; */
+    width: 1237px;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+  }
+  
+  .menuItem {
+    font-size: 18px;
+    color: #222;
+    margin: 50px;
+  }
+  
+  .menuItem:hover {
+    color: #119d36;
+  }
